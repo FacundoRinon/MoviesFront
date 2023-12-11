@@ -52,6 +52,8 @@ const Home = () => {
     treSeries();
   }, [apiPage]);
 
+  console.log(popularMovies);
+
   return (
     <div className="home">
       {upcomingMovies && upcomingMovies.length > 0 ? (
@@ -59,10 +61,15 @@ const Home = () => {
       ) : (
         <p>Loading</p>
       )}
-      <div className="home__trendingSeries">
+      <div className="home__normalList">
         <h2>What to watch</h2>
         <small>Trending TV shows</small>
         <ElementsList elements={trendingSeries} />
+      </div>
+      <div className="home__normalList">
+        <h2>Popular</h2>
+        <small>Trending TV shows</small>
+        <ElementsList elements={popularMovies} />
       </div>
       <h1>Home page</h1>
       <h1>Home page</h1>

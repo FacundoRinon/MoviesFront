@@ -1,5 +1,8 @@
 .elementsList {
   display: flex;
   flex-direction: row;
-  overflow: scroll;
+  overflow-x: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }

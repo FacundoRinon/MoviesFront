@@ -5,23 +5,9 @@ import ElementCard from "../ElementCard";
 import "./index.scss";
 
 const ElementsList = ({ elements }) => {
-  console.log(elements);
   return (
     <div className="elementsList">
-      <ElementCard />
-      <p>elements</p>
-      <p>elements</p>
-      <p>elements</p>
-      <p>elements</p>
-      <p>elements</p>
-      <p>elements</p>
-      <p>elements</p>
-      <p>elements</p>
-      <p>elements</p>
-      <p>elements</p>
-      <p>elements</p>
-      <p>elements</p>
-      <p>elements</p>
+      {elements && elements.map((element) => <ElementCard element={element} />)}
     </div>
   );
 };
