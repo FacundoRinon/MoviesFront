@@ -7,7 +7,18 @@ import "./index.scss";
 const Home = () => {
   return (
     <div className="home">
-      <Navbar />
+      <h1>Home page</h1>
+      <h1>Home page</h1>
+      <h1>Home page</h1>
+      <h1>Home page</h1>
+      <h1>Home page</h1>
+      <h1>Home page</h1>
+      <h1>Home page</h1>
+      <h1>Home page</h1>
+      <h1>Home page</h1>
+      <h1>Home page</h1>
+      <h1>Home page</h1>
+      <h1>Home page</h1>
       <h1>Home page</h1>
     </div>
   );

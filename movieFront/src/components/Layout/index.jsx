@@ -1,9 +1,17 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
+
+import Navbar from "../Navbar";
+
+import "./index.scss";
 
 const Layout = () => {
   return (
     <div className="layout">
-      <h1>Layout</h1>
+      <Navbar />
+      <div className="layout__outlet">
+        <Outlet />
+      </div>
     </div>
   );
 };
