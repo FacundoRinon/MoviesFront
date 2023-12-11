@@ -16,4 +16,14 @@ const getUpcomingMovies = () => {
   return instance.get(`movie/upcoming`);
 };
 
-export { getMovies, getMovieById, getPopularMovies, getUpcomingMovies };
+const getTopRated = () => {
+  return instance.get(`movie/top_rated`);
+};
+
+export {
+  getMovies,
+  getMovieById,
+  getPopularMovies,
+  getUpcomingMovies,
+  getTopRated,
+};

@@ -3,8 +3,11 @@ import React, { useEffect, useState } from "react";
 import { getMovies } from "../../api/movies";
 import { getUpcomingMovies } from "../../api/movies";
 import { getPopularMovies } from "../../api/movies";
+import { getTopRated } from "../../api/movies";
+import { getTrending } from "../../api/series";
 
 import UpcomingMovies from "../../components/UpcomingMovies";
+import ElementsList from "../../components/ElementsList";
 
 import "./index.scss";
 
@@ -12,6 +15,8 @@ const Home = () => {
   const [movies, setMovies] = useState([]);
   const [upcomingMovies, setUpcomingMovies] = useState([]);
   const [popularMovies, setPopularMovies] = useState([]);
+  const [topRated, setTopRated] = useState([]);
+  const [trendingSeries, setTrendingSeries] = useState([]);
   const [apiPage, setApiPage] = useState(1);
 
   const initHome = async () => {
@@ -29,13 +34,23 @@ const Home = () => {
     setPopularMovies(response.data.results);
   };
 
+  const top = async () => {
+    const response = await getTopRated();
+    setTopRated(response.data.results);
+  };
+
+  const treSeries = async () => {
+    const response = await getTrending();
+    setTrendingSeries(response.data.results);
+  };
+
   useEffect(() => {
     initHome();
     upcoming();
     popular();
+    top();
+    treSeries();
   }, [apiPage]);
-
-  console.log(upcomingMovies);
 
   return (
     <div className="home">
@@ -44,6 +59,11 @@ const Home = () => {
       ) : (
         <p>Loading</p>
       )}
+      <div className="home__trendingSeries">
+        <h2>What to watch</h2>
+        <small>Trending TV shows</small>
+        <ElementsList elements={trendingSeries} />
+      </div>
       <h1>Home page</h1>
       <h1>Home page</h1>
       <h1>Home page</h1>
