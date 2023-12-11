@@ -1,3 +1,5 @@
+@import "../../theme/variables.scss";
+
 .signUp {
   display: flex;
   flex-wrap: wrap;
@@ -47,12 +49,13 @@
       }
 
       & button {
-        background-color: rgb(245, 209, 6);
-        border: 1px solid rgb(245, 209, 6);
+        background-color: $color-primary;
+        border: 1px solid $color-primary;
         border-radius: 10px;
         padding: 0.5rem;
         margin-top: 1rem;
         margin-bottom: 1.5rem;
+        cursor: pointer;
       }
     }
   }

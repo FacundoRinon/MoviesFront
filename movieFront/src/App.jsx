@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
+import Layout from "./components/Layout";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
@@ -14,7 +15,9 @@ function App() {
     <Routes>
       <Route path="/signUp" element={<SignUp />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+      </Route>
     </Routes>
   );
 }
