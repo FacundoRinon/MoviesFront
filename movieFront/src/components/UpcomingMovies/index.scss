@@ -1,0 +1,118 @@
+@import "../../theme/variables.scss";
+
+.upcomingMovies {
+  display: flex;
+  flex-direction: row;
+  width: 95%;
+  padding-top: 1rem;
+
+  &__selectedMovie {
+    width: 65%;
+    position: relative;
+    @media (max-width: 1024px) {
+      width: 100%;
+    }
+    & img {
+      width: 100%;
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 40%;
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.7) 80%,
+        transparent 100%
+      );
+      pointer-events: none;
+    }
+  }
+
+  &__changeRow {
+    position: absolute;
+    top: 35%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__chevron {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 2.5rem;
+    border: 3px solid white;
+    border-radius: 5px;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    cursor: pointer;
+    transition: transform 0.5s;
+    @media (max-width: 1024px) {
+      font-size: 1rem;
+    }
+    &:hover {
+      transform: scale(1.05);
+      color: $color-primary;
+    }
+  }
+
+  &__noBackdrop {
+    width: 100%;
+    max-height: 25rem;
+    object-fit: cover;
+  }
+
+  &__selectedInfo {
+    color: white;
+    position: absolute;
+    bottom: -4rem;
+    left: 1rem;
+    display: flex;
+    align-items: end;
+    & img {
+      width: 20%;
+    }
+  }
+
+  &__info {
+    padding: 0.5rem;
+  }
+
+  &__nextMovies {
+    padding-left: 1rem;
+    width: 35%;
+    color: $color-primary;
+    display: flex;
+    flex-direction: column;
+    @media (max-width: 1024px) {
+      display: none;
+    }
+    & p {
+      margin: 0;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+  }
+
+  &__nextMovie {
+    display: flex;
+    padding: 1rem;
+    transition: transform 0.5s;
+    & img {
+      width: 20%;
+    }
+    &:hover {
+      transition: background-color 1s;
+      transform: scale(1.03);
+      background-color: $color-secondary;
+    }
+  }
+
+  &__nextInfo {
+    color: white;
+    padding-left: 1rem;
+  }
+}

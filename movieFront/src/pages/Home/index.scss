@@ -1,3 +1,16 @@
 .home {
   width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: black;
+
+  &__upcomingRow {
+    width: 95%;
+
+    & .upcomingMovie {
+      width: 50%;
+      background-color: white;
+    }
+  }
 }
