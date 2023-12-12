@@ -1,0 +1,44 @@
+@import "../../theme/variables.scss";
+
+.footer {
+  width: 100%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+
+  &__icons {
+    display: flex;
+    justify-content: space-around;
+    width: 40%;
+  }
+
+  &__icon {
+    font-size: 2rem;
+    padding: 1rem;
+    &:hover {
+      border-radius: 50%;
+      background-color: $color-secondary;
+    }
+  }
+
+  &__links {
+    margin-top: 1rem;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    & p {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+  }
+
+  &__logo {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}

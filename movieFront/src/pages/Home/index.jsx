@@ -10,6 +10,7 @@ import { getTrending } from "../../api/series";
 
 import UpcomingMovies from "../../components/UpcomingMovies";
 import ElementsList from "../../components/ElementsList";
+import Footer from "../../components/Footer";
 
 import "./index.scss";
 
@@ -92,6 +93,7 @@ const Home = () => {
         <p>Popular movies in IMDb</p>
         <ElementsList elements={popularMovies} />
       </div>
+      <Footer />
     </div>
   );
 };
