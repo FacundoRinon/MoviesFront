@@ -19,4 +19,13 @@
       }
     }
   }
+
+  &__spinner {
+    height: 92.3vh;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
