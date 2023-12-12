@@ -6,16 +6,19 @@ import {
   faBars,
   faCaretDown,
 } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 import "./index.scss";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="navbar">
       <div className="navbar__content">
         <div className="navbar__leftItems">
           <FontAwesomeIcon className="navbar__bars" icon={faBars} />
-          <img src="../public/logo.png" alt="" />
+          <img onClick={() => navigate("/")} src="../public/logo.png" alt="" />
           <p className="navbar__menu">
             <FontAwesomeIcon className="navbar__icon" icon={faBars} /> Menú
           </p>
