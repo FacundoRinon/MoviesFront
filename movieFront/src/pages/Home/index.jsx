@@ -11,6 +11,7 @@ import { getTrending } from "../../api/series";
 import UpcomingMovies from "../../components/UpcomingMovies";
 import ElementsList from "../../components/ElementsList";
 import Footer from "../../components/Footer";
+import Spinner from "../../components/Spinner";
 
 import "./index.scss";
 
@@ -68,33 +69,39 @@ const Home = () => {
   }, [apiPage]);
 
   return (
-    <div className="home">
+    <>
       {upcomingMovies && upcomingMovies.length > 0 ? (
-        <UpcomingMovies list={upcomingMovies} />
+        <div className="home">
+          <UpcomingMovies list={upcomingMovies} />
+          <div className="home__normalList">
+            <h2>What to watch</h2>
+            <p>Trending TV shows</p>
+            <ElementsList elements={trendingSeries} />
+            <p>Trending Movies</p>
+            <ElementsList elements={trendingMovies} />
+          </div>
+          <div className="home__normalList">
+            <h2>Top rated</h2>
+            <p>Series</p>
+            <ElementsList elements={topSeries} />
+            <p>Movies</p>
+            <ElementsList elements={topRated} />
+          </div>
+          <div className="home__normalList">
+            <h2>Popular</h2>
+            <p>Popular movies in IMDb</p>
+            <ElementsList elements={popularMovies} />
+          </div>
+          <Footer />
+        </div>
       ) : (
-        <p>Loading</p>
+        <div className="home">
+          <div className="home__spinner">
+            <Spinner />
+          </div>
+        </div>
       )}
-      <div className="home__normalList">
-        <h2>What to watch</h2>
-        <p>Trending TV shows</p>
-        <ElementsList elements={trendingSeries} />
-        <p>Trending Movies</p>
-        <ElementsList elements={trendingMovies} />
-      </div>
-      <div className="home__normalList">
-        <h2>Top rated</h2>
-        <p>Best rated Series</p>
-        <ElementsList elements={topSeries} />
-        <p>Movies that you will love</p>
-        <ElementsList elements={topRated} />
-      </div>
-      <div className="home__normalList">
-        <h2>Popular</h2>
-        <p>Popular movies in IMDb</p>
-        <ElementsList elements={popularMovies} />
-      </div>
-      <Footer />
-    </div>
+    </>
   );
 };
 

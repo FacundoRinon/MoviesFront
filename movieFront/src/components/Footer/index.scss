@@ -14,11 +14,18 @@
     display: flex;
     justify-content: space-around;
     width: 40%;
+    @media (max-width: 576px) {
+      flex-wrap: wrap;
+      width: 70%;
+    }
   }
 
   &__icon {
     font-size: 2rem;
     padding: 1rem;
+    @media (max-width: 576px) {
+      font-size: 2rem;
+    }
     &:hover {
       border-radius: 50%;
       background-color: $color-secondary;
