@@ -4,9 +4,12 @@
   justify-content: center;
   color: white;
   width: 100%;
-  background-color: rgb(32, 31, 31);
+  background-color: rgb(29, 28, 28);
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  @media (max-width: 400px) {
+    height: 2.5rem;
+  }
 
   &__content {
     display: flex;

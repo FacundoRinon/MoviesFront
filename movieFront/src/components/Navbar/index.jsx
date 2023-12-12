@@ -19,7 +19,7 @@ const Navbar = () => {
           <p className="navbar__menu">
             <FontAwesomeIcon className="navbar__icon" icon={faBars} /> Menú
           </p>
-          <input placeholder="Search IMDb" type="text" />
+          <input id="search" placeholder="Search IMDb" type="text" />
         </div>
         <div className="navbar__rightItems">
           <p className="navbar__watchlist">

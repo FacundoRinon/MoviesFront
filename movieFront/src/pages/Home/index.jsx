@@ -1,25 +1,97 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-import Navbar from "../../components/Navbar";
+import { getUpcomingMovies } from "../../api/movies";
+import { getPopularMovies } from "../../api/movies";
+import { getTopRated } from "../../api/movies";
+import { getTrendingMovies } from "../../api/movies";
+
+import { topRatedSeries } from "../../api/series";
+import { getTrending } from "../../api/series";
+
+import UpcomingMovies from "../../components/UpcomingMovies";
+import ElementsList from "../../components/ElementsList";
 
 import "./index.scss";
 
 const Home = () => {
+  const [upcomingMovies, setUpcomingMovies] = useState([]);
+  const [popularMovies, setPopularMovies] = useState([]);
+  const [topRated, setTopRated] = useState([]);
+  const [trendingMovies, setTrendingMovies] = useState([]);
+  const [topSeries, setTopSeries] = useState([]);
+  const [trendingSeries, setTrendingSeries] = useState([]);
+  const [apiPage, setApiPage] = useState(1);
+
+  // const initHome = async () => {
+  //   const response = await getMovies(apiPage);
+  //   setMovies((prevMovies) => [...prevMovies, ...response.data.results]);
+  // };
+
+  const upcoming = async () => {
+    const response = await getUpcomingMovies();
+    setUpcomingMovies(response.data.results);
+  };
+
+  const popular = async () => {
+    const response = await getPopularMovies();
+    setPopularMovies(response.data.results);
+  };
+
+  const top = async () => {
+    const response = await getTopRated();
+    setTopRated(response.data.results);
+  };
+
+  const treMovies = async () => {
+    const response = await getTrendingMovies();
+    setTrendingMovies(response.data.results);
+  };
+
+  const seriesTop = async () => {
+    const response = await topRatedSeries();
+    setTopSeries(response.data.results);
+  };
+
+  const treSeries = async () => {
+    const response = await getTrending();
+    setTrendingSeries(response.data.results);
+  };
+
+  useEffect(() => {
+    upcoming();
+    popular();
+    top();
+    seriesTop();
+    treSeries();
+    treMovies();
+  }, [apiPage]);
+
   return (
     <div className="home">
-      <h1>Home page</h1>
-      <h1>Home page</h1>
-      <h1>Home page</h1>
-      <h1>Home page</h1>
-      <h1>Home page</h1>
-      <h1>Home page</h1>
-      <h1>Home page</h1>
-      <h1>Home page</h1>
-      <h1>Home page</h1>
-      <h1>Home page</h1>
-      <h1>Home page</h1>
-      <h1>Home page</h1>
-      <h1>Home page</h1>
+      {upcomingMovies && upcomingMovies.length > 0 ? (
+        <UpcomingMovies list={upcomingMovies} />
+      ) : (
+        <p>Loading</p>
+      )}
+      <div className="home__normalList">
+        <h2>What to watch</h2>
+        <p>Trending TV shows</p>
+        <ElementsList elements={trendingSeries} />
+        <p>Trending Movies</p>
+        <ElementsList elements={trendingMovies} />
+      </div>
+      <div className="home__normalList">
+        <h2>Top rated</h2>
+        <p>Best rated Series</p>
+        <ElementsList elements={topSeries} />
+        <p>Movies that you will love</p>
+        <ElementsList elements={topRated} />
+      </div>
+      <div className="home__normalList">
+        <h2>Popular</h2>
+        <p>Popular movies in IMDb</p>
+        <ElementsList elements={popularMovies} />
+      </div>
     </div>
   );
 };
