@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 import "./index.scss";
 
@@ -18,7 +18,10 @@ const ElementCard = ({ element }) => {
         </p>
         {element.name && <p className="elementCard__name">{element.name}</p>}
         {element.title && <p className="elementCard__name">{element.title}</p>}
-        <p className="elementCard__watchlistButton">Watchlist</p>
+        <p className="elementCard__watchlistButton">
+          <FontAwesomeIcon className="elementCard__plus" icon={faPlus} />{" "}
+          Watchlist
+        </p>
       </div>
     </div>
   );

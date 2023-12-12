@@ -7,7 +7,10 @@ import "./index.scss";
 const ElementsList = ({ elements }) => {
   return (
     <div className="elementsList">
-      {elements && elements.map((element) => <ElementCard element={element} />)}
+      {elements &&
+        elements.map((element) => (
+          <ElementCard key={element.id} element={element} />
+        ))}
     </div>
   );
 };

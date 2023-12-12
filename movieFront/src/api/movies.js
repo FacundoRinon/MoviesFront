@@ -20,10 +20,15 @@ const getTopRated = () => {
   return instance.get(`movie/top_rated`);
 };
 
+const getTrendingMovies = () => {
+  return instance.get(`trending/movie/week`);
+};
+
 export {
   getMovies,
   getMovieById,
   getPopularMovies,
   getUpcomingMovies,
   getTopRated,
+  getTrendingMovies,
 };

@@ -67,7 +67,10 @@ const UpcomingMovies = ({ list }) => {
       </div>
       <div className="upcomingMovies__nextMovies">
         <p>Up next</p>
-        <div className="upcomingMovies__nextMovie">
+        <div
+          onClick={() => setSelectedMovie(selectedMovie + 1)}
+          className="upcomingMovies__nextMovie"
+        >
           <img
             src={`https://image.tmdb.org/t/p/original${
               list[selectedMovie + 1].poster_path
@@ -79,7 +82,10 @@ const UpcomingMovies = ({ list }) => {
             <small>{list[selectedMovie + 1].release_date}</small>
           </div>
         </div>
-        <div className="upcomingMovies__nextMovie">
+        <div
+          onClick={() => setSelectedMovie(selectedMovie + 2)}
+          className="upcomingMovies__nextMovie"
+        >
           <img
             src={`https://image.tmdb.org/t/p/original${
               list[selectedMovie + 2].poster_path
@@ -91,7 +97,10 @@ const UpcomingMovies = ({ list }) => {
             <small>{list[selectedMovie + 2].release_date}</small>
           </div>
         </div>
-        <div className="upcomingMovies__nextMovie">
+        <div
+          onClick={() => setSelectedMovie(selectedMovie + 3)}
+          className="upcomingMovies__nextMovie"
+        >
           <img
             src={`https://image.tmdb.org/t/p/original${
               list[selectedMovie + 3].poster_path

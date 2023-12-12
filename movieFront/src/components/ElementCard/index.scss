@@ -3,9 +3,21 @@
 .elementCard {
   margin: 1rem;
   background-color: $color-secondary;
+  transition: transform 0.5s;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.05);
+  }
+  @media (max-width: 576px) {
+    margin: 0.5rem;
+  }
   & img {
     width: 13rem;
     height: 20rem;
+    @media (max-width: 576px) {
+      width: 9rem;
+      height: 12rem;
+    }
   }
 
   &__info {
@@ -27,9 +39,17 @@
     display: flex;
     font-weight: 800;
     justify-content: center;
+    align-items: center;
     color: rgb(41, 139, 196);
     background-color: rgb(70, 66, 66);
     padding: 0.5rem;
     border-radius: 5px;
+    &:hover {
+      background-color: rgb(42, 51, 54);
+    }
+  }
+
+  &__plus {
+    margin-right: 0.5rem;
   }
 }

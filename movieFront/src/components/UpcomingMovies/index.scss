@@ -6,6 +6,9 @@
   width: 95%;
   padding-top: 1rem;
   margin-bottom: 5rem;
+  @media (max-width: 576px) {
+    margin-bottom: 7rem;
+  }
 
   &__selectedMovie {
     width: 65%;
@@ -73,8 +76,14 @@
     left: 1rem;
     display: flex;
     align-items: end;
+    @media (max-width: 576px) {
+      bottom: -7rem;
+    }
     & img {
       width: 20%;
+      @media (max-width: 576px) {
+        width: 35%;
+      }
     }
   }
 
@@ -88,6 +97,7 @@
     color: $color-primary;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
     @media (max-width: 1024px) {
       display: none;
     }

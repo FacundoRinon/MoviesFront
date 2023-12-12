@@ -14,6 +14,9 @@
     & h2 {
       font-size: 3rem;
       color: $color-primary;
+      @media (max-width: 576px) {
+        font-size: 1.5rem;
+      }
     }
   }
 }
