@@ -14,6 +14,22 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+  }
+
+  &__presentationInfo {
+    & h1 {
+      margin: 0.2rem;
+      font-size: 2.5rem;
+    }
+  }
+
+  &__headerIcons {
+    font-size: 1.5rem;
+    &--yellow {
+      font-size: 1.5rem;
+      color: $color-primary;
+    }
   }
 
   &__presentationScore {
@@ -32,6 +48,8 @@
     display: flex;
     flex-direction: row;
     max-height: 28.5rem;
+    width: 100%;
+    margin-top: 1rem;
   }
 
   &__poster {
@@ -40,8 +58,12 @@
 
   &__video {
     width: 59%;
+    max-height: 28.5rem;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
+    & img {
+      width: 100%;
+    }
   }
 
   &__visualsCol {
@@ -49,7 +71,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    width: 19%;
     max-height: 28.5rem;
   }
   &__visualBox {
@@ -73,5 +95,14 @@
     margin: 0.5rem;
     border: 1px solid white;
     border-radius: 20px;
+  }
+
+  &__spinner {
+    height: 92.3vh;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

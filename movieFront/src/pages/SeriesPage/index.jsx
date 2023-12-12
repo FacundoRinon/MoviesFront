@@ -11,6 +11,8 @@ import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
 import { getSerieById } from "../../api/series";
 import { getSeriesVideosById } from "../../api/series";
 import Spinner from "../../components/Spinner";
+import VideoPlayer from "../../components/VideoPlayer";
+import Footer from "../../components/Footer";
 
 import "./index.scss";
 
@@ -26,10 +28,12 @@ const SeriesPage = () => {
       try {
         const response = await getSerieById(id);
         const response2 = await getSeriesVideosById(id);
-        console.log(response.data);
-        console.log(response2.data.results);
+        const newVideos = response2.data.results.filter((video) => {
+          return !video.name.includes("removed");
+        });
+        console.log("new videos", newVideos);
         setSeries(response.data);
-        setVideos(response2.data.results);
+        setVideos(newVideos);
       } catch (error) {
         console.log(error);
       }
@@ -56,7 +60,10 @@ const SeriesPage = () => {
               <div className="seriesPage__score">
                 <small>Score average</small>
                 <p>
-                  <FontAwesomeIcon className="" icon={solidStar} />{" "}
+                  <FontAwesomeIcon
+                    className="seriesPage__headerIcons--yellow"
+                    icon={solidStar}
+                  />{" "}
                   {series.vote_average}/10
                 </p>
                 <small>{series.vote_count} votes</small>
@@ -64,7 +71,11 @@ const SeriesPage = () => {
               <div className="seriesPage__score">
                 <small>Your rating</small>
                 <p>
-                  <FontAwesomeIcon className="" icon={regularStar} /> Rate
+                  <FontAwesomeIcon
+                    className="seriesPage__headerIcons"
+                    icon={regularStar}
+                  />{" "}
+                  Rate
                 </p>
               </div>
             </div>
@@ -75,18 +86,29 @@ const SeriesPage = () => {
               alt=""
               className="seriesPage__poster"
             />
-            <img
-              src={`https://image.tmdb.org/t/p/original${series.backdrop_path}`}
-              alt=""
-              className="seriesPage__video"
-            />
+            <div className="seriesPage__video">
+              {videos.length > 1 ? (
+                <VideoPlayer videoInfo={videos[1]} />
+              ) : (
+                <img
+                  src={`https://image.tmdb.org/t/p/original${series.backdrop_path}`}
+                  alt=""
+                />
+              )}
+            </div>
             <div className="seriesPage__visualsCol">
               <div className="seriesPage__visualBox">
-                <FontAwesomeIcon className="" icon={faVideo} />
+                <FontAwesomeIcon
+                  className="seriesPage__headerIcons"
+                  icon={faVideo}
+                />
                 <p>Videos</p>
               </div>
               <div className="seriesPage__visualBox">
-                <FontAwesomeIcon icon={faImages} />
+                <FontAwesomeIcon
+                  className="seriesPage__headerIcons"
+                  icon={faImages}
+                />
                 <p>Photos</p>
               </div>
             </div>
@@ -103,9 +125,14 @@ const SeriesPage = () => {
           <div className="seriesPage__overview">
             <p>{series.overview}</p>
           </div>
+          <Footer />
         </div>
       ) : (
-        <Spinner />
+        <div className="seriesPage">
+          <div className="seriesPage__spinner">
+            <Spinner />
+          </div>
+        </div>
       )}
     </div>
   );

@@ -20,7 +20,7 @@ const Navbar = () => {
           <FontAwesomeIcon className="navbar__bars" icon={faBars} />
           <img onClick={() => navigate("/")} src="../public/logo.png" alt="" />
           <p className="navbar__menu">
-            <FontAwesomeIcon className="navbar__icon" icon={faBars} /> Menú
+            <FontAwesomeIcon className="navbar__icon" icon={faBars} /> Menu
           </p>
           <input id="search" placeholder="Search IMDb" type="text" />
         </div>

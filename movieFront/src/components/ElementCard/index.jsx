@@ -6,9 +6,11 @@ import { faStar, faPlus } from "@fortawesome/free-solid-svg-icons";
 import "./index.scss";
 
 const ElementCard = ({ element }) => {
-  const linkTo = element.first_air_date
-    ? `/series/${element.id}`
-    : `/movies/${element.id}`;
+  const linkTo =
+    element.media_type === "tv"
+      ? `/series/${element.id}`
+      : `/movies/${element.id}`;
+
   return (
     <div className="elementCard">
       <Link to={linkTo} className="link">
