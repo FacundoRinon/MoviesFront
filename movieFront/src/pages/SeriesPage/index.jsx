@@ -12,9 +12,12 @@ import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
 
 import { getSerieById } from "../../api/series";
 import { getSeriesVideosById } from "../../api/series";
+import { getSeriesImages } from "../../api/series";
+import { getSeriesCast } from "../../api/series";
 import Spinner from "../../components/Spinner";
 import VideoPlayer from "../../components/VideoPlayer";
 import EpisodeCard from "../../components/EpisodeCard";
+import CastCard from "../../components/CastCard";
 import Footer from "../../components/Footer";
 
 import "./index.scss";
@@ -25,6 +28,8 @@ const SeriesPage = () => {
   const [series, setSeries] = useState([]);
   const [videos, setVideos] = useState([]);
   const [episodes, setEpisodes] = useState([]);
+  const [photos, setPhotos] = useState([]);
+  const [cast, setCast] = useState([]);
 
   useEffect(() => {
     const initHome = async () => {
@@ -34,8 +39,16 @@ const SeriesPage = () => {
         const newVideos = response2.data.results.filter((video) => {
           return !video.name.includes("removed");
         });
+        const response3 = await getSeriesImages(id);
+        const response4 = await getSeriesCast(id);
         setSeries(response.data);
         setVideos(newVideos);
+        setPhotos(response3.data.backdrops);
+        if (response4.data.cast.length > 0) {
+          setCast(response4.data.cast.slice(0, 10));
+        } else {
+          setCast(response4.data.crew.slice(0, 10));
+        }
       } catch (error) {
         console.log(error);
       }
@@ -43,7 +56,7 @@ const SeriesPage = () => {
     initHome();
   }, []);
 
-  console.log(series);
+  const filteredPhotos = photos.slice(0, 30);
 
   return (
     <div className="seriesPage">
@@ -52,7 +65,10 @@ const SeriesPage = () => {
           <div className="seriesPage__section1">
             <div className="seriesPage__container">
               <div className="seriesPage__episodesRow">
-                <p>Episode guide {series.number_of_episodes}</p>
+                <p className="seriesPage__clickRow">
+                  Episode guide {series.number_of_episodes}{" "}
+                  <FontAwesomeIcon icon={faChevronRight} />
+                </p>
               </div>
               <div className="seriesPage__presentation">
                 <div className="seriesPage__presentationInfo">
@@ -70,7 +86,7 @@ const SeriesPage = () => {
                         className="seriesPage__headerIcons--yellow"
                         icon={solidStar}
                       />{" "}
-                      {series.vote_average}/10
+                      {series.vote_average.toFixed(1)}/10
                     </p>
                     <small>{series.vote_count} votes</small>
                   </div>
@@ -115,7 +131,7 @@ const SeriesPage = () => {
                       className="seriesPage__headerIcons"
                       icon={faImages}
                     />
-                    <p>Photos</p>
+                    <p>{photos.length} Photos</p>
                   </div>
                 </div>
               </div>
@@ -135,16 +151,41 @@ const SeriesPage = () => {
           </div>
           <div className="seriesPage__section2">
             <div className="seriesPage__container">
-              <div className="seriesPage__episodesSection">
-                <div className="seriesPage__episodes">
-                  <h2>
-                    {series.number_of_episodes} Episodes
-                    <FontAwesomeIcon icon={faChevronRight} />
-                  </h2>
-                  <EpisodeCard episode={series.last_episode_to_air} />
+              <div className="seriesPage__dataSection">
+                <div className="seriesPage__data">
+                  <div className="seriesPage__episodes">
+                    <h2 className="seriesPage__clickRow">
+                      {series.number_of_episodes} Episodes{" "}
+                      <FontAwesomeIcon icon={faChevronRight} />
+                    </h2>
+                    <p>Most recent</p>
+                    <EpisodeCard episode={series.last_episode_to_air} />
+                  </div>
+                  <div className="seriesPage__cast">
+                    <h2 className="seriesPage__clickRow">
+                      Top cast <FontAwesomeIcon icon={faChevronRight} />
+                    </h2>
+                    <div className="seriesPage__castSection">
+                      {cast.map((castMember) => (
+                        <CastCard key={castMember.id} person={castMember} />
+                      ))}
+                    </div>
+                  </div>
                 </div>
                 <div className="seriesPage__photosCol">
-                  <p>photos</p>
+                  <h2 className="seriesPage__clickRow">
+                    Photos <FontAwesomeIcon icon={faChevronRight} />
+                  </h2>
+                  <div className="seriesPage__photos">
+                    {filteredPhotos.map((photo) => (
+                      <img
+                        key={photo.file_path}
+                        src={`https://image.tmdb.org/t/p/original${photo.file_path}`}
+                        alt=""
+                        className="seriesPage__photo"
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

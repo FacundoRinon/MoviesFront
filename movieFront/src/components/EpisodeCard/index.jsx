@@ -6,8 +6,6 @@ import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
 import "./index.scss";
 
 const EpisodeCard = ({ episode }) => {
-  console.log(episode);
-
   return (
     <div className="episodeCard">
       <img

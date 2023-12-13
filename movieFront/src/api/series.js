@@ -16,4 +16,19 @@ const getTrending = () => {
   return instance.get("trending/tv/week");
 };
 
-export { getSerieById, getSeriesVideosById, topRatedSeries, getTrending };
+const getSeriesImages = (seriesId) => {
+  return instance.get(`tv/${seriesId}/images`);
+};
+
+const getSeriesCast = (seriesId) => {
+  return instance.get(`tv/${seriesId}/credits`);
+};
+
+export {
+  getSerieById,
+  getSeriesVideosById,
+  topRatedSeries,
+  getTrending,
+  getSeriesImages,
+  getSeriesCast,
+};

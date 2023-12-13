@@ -18,6 +18,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
   }
 
   &__presentationInfo {
@@ -60,10 +61,21 @@
     max-height: 28.5rem;
     width: 100%;
     margin-top: 1rem;
+    @media (max-width: 800px) {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
   }
 
   &__poster {
     width: 22%;
+    @media (max-width: 800px) {
+      width: 30%;
+    }
+    @media (max-width: 450px) {
+      width: 50%;
+      margin-bottom: 1rem;
+    }
   }
 
   &__video {
@@ -72,6 +84,12 @@
     margin-left: 0.5rem;
     margin-right: 0.5rem;
     & img {
+      width: 100%;
+    }
+    @media (max-width: 800px) {
+      width: 66%;
+    }
+    @media (max-width: 450px) {
       width: 100%;
     }
   }
@@ -83,6 +101,10 @@
     justify-content: space-between;
     width: 19%;
     max-height: 28.5rem;
+    @media (max-width: 800px) {
+      flex-direction: row;
+      width: 100%;
+    }
   }
   &__visualBox {
     background-color: $color-secondary;
@@ -93,11 +115,32 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    &:hover {
+      background-color: rgb(54, 53, 53);
+    }
+
+    @media (max-width: 800px) {
+      flex-direction: row;
+      margin: 0;
+      height: auto;
+      width: 50%;
+      margin-top: 0.5rem;
+      margin-left: 0.25rem;
+      margin-right: 0.25rem;
+      border-radius: 15px;
+      p {
+        margin-left: 0.5rem;
+      }
+    }
   }
 
   &__genres {
     margin-top: 1rem;
     display: flex;
+    overflow: scroll;
+    @media (max-width: 450px) {
+      margin-top: 6rem;
+    }
   }
 
   &__genre {
@@ -130,15 +173,62 @@
     justify-content: center;
   }
 
-  &__episodesSection {
+  &__dataSection {
     display: flex;
+    @media (max-width: 576px) {
+      flex-direction: column-reverse;
+    }
   }
 
-  &__episodes {
+  &__data {
     width: 70%;
+    @media (max-width: 576px) {
+      width: 100%;
+    }
+  }
+
+  &__castSection {
+    display: flex;
+    flex-wrap: wrap;
   }
 
   &__photosCol {
     width: 30%;
+    margin-bottom: 3rem;
+    @media (max-width: 576px) {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__photos {
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 50rem;
+    justify-content: center;
+    overflow: scroll;
+    @media (max-width: 576px) {
+      flex-wrap: nowrap;
+      justify-content: start;
+    }
+    @media (max-width: 800px) {
+      max-height: 105rem;
+    }
+  }
+
+  &__photo {
+    width: calc(100% - 1rem);
+    margin-top: 1rem;
+    @media (max-width: 576px) {
+      margin-right: 1rem;
+      width: 60%;
+    }
+  }
+
+  &__clickRow {
+    cursor: pointer;
+    &:hover {
+      color: $color-primary;
+    }
   }
 }
