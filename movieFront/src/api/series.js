@@ -1,5 +1,13 @@
 import instance from "./config";
 
+const getSerieById = (serieId) => {
+  return instance.get(`tv/${serieId}`);
+};
+
+const getSeriesVideosById = (seriesId) => {
+  return instance.get(`tv/${seriesId}/videos`);
+};
+
 const topRatedSeries = () => {
   return instance.get("tv/top_rated");
 };
@@ -8,4 +16,19 @@ const getTrending = () => {
   return instance.get("trending/tv/week");
 };
 
-export { topRatedSeries, getTrending };
+const getSeriesImages = (seriesId) => {
+  return instance.get(`tv/${seriesId}/images`);
+};
+
+const getSeriesCast = (seriesId) => {
+  return instance.get(`tv/${seriesId}/credits`);
+};
+
+export {
+  getSerieById,
+  getSeriesVideosById,
+  topRatedSeries,
+  getTrending,
+  getSeriesImages,
+  getSeriesCast,
+};

@@ -1,0 +1,28 @@
+.castCard {
+  width: calc(50% - 1rem);
+  margin: 0.5rem;
+  display: flex;
+  @media (max-width: 800px) {
+    width: calc(100% - 1rem);
+  }
+  img {
+    min-width: 6rem;
+    height: 6rem;
+    object-fit: cover;
+    border-radius: 50%;
+    @media (max-width: 800px) {
+      min-width: 7rem;
+      height: 7rem;
+    }
+    @media (max-width: 250px) {
+      min-width: 3rem;
+      height: 3rem;
+    }
+  }
+  &__info {
+    padding: 0.5rem;
+    h3 {
+      margin: 0;
+    }
+  }
+}
