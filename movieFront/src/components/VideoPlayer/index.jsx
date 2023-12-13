@@ -2,16 +2,16 @@ import React from "react";
 
 import "./index.scss";
 
-const VideoPlayer = ({ videoInfo }) => {
-  const videoUrl = `https://www.youtube.com/embed/${videoInfo.key}`;
+const VideoPlayer = ({ videos }) => {
+  const trailer = videos[1];
 
-  console.log(videoInfo);
+  const videoUrl = `https://www.youtube.com/embed/${trailer.key}`;
 
   return (
     <div className="videoPlayer">
       <iframe
         className="videoPlayer__iframe"
-        title={videoInfo.name}
+        title={trailer.name}
         src={videoUrl}
         allowFullScreen
       ></iframe>

@@ -21,7 +21,7 @@ const ElementCard = ({ element }) => {
         <div className="elementCard__info">
           <p>
             <FontAwesomeIcon className="elementCard__star" icon={faStar} />{" "}
-            {element.vote_average}
+            {element.vote_average.toFixed(1)}
           </p>
           {element.name && <p className="elementCard__name">{element.name}</p>}
           {element.title && (

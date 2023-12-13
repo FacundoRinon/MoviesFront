@@ -2,10 +2,13 @@
 
 .seriesPage {
   width: 100%;
-  background-color: black;
-  color: white;
-  display: flex;
-  justify-content: center;
+  &__section1 {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+  }
+
   &__container {
     width: 91%;
   }
@@ -21,6 +24,13 @@
     & h1 {
       margin: 0.2rem;
       font-size: 2.5rem;
+    }
+  }
+
+  &__presentationInfoRow {
+    small {
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
     }
   }
 
@@ -97,6 +107,13 @@
     border-radius: 20px;
   }
 
+  &__overview {
+    margin-bottom: 3rem;
+    p {
+      text-align: justify;
+    }
+  }
+
   &__spinner {
     height: 92.3vh;
     width: 100%;
@@ -104,5 +121,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  &__section2 {
+    background-color: white;
+    color: black;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__episodesSection {
+    display: flex;
+  }
+
+  &__episodes {
+    width: 70%;
+  }
+
+  &__photosCol {
+    width: 30%;
   }
 }
