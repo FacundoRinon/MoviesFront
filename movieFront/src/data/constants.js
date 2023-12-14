@@ -4,4 +4,5 @@ export const ROUTES = {
   home: "/",
   serie: "series/:id",
   movie: "movies/:id",
+  photos: "photos/:id/:media/:position",
 };

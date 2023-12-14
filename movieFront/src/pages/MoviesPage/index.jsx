@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faVideo,
@@ -23,6 +23,8 @@ import "./index.scss";
 const MoviesPage = () => {
   const { id } = useParams();
 
+  const navigate = useNavigate();
+
   const [movie, setMovie] = useState([]);
   const [videos, setVideos] = useState([]);
   const [photos, setPhotos] = useState([]);
@@ -43,7 +45,6 @@ const MoviesPage = () => {
         setMovie(response.data);
         setVideos(newVideos);
         setPhotos(response3.data.backdrops);
-        console.log(response4.data);
         if (response4.data.cast.length > 0) {
           setCast(response4.data.cast.slice(0, 10));
         } else {
@@ -64,7 +65,6 @@ const MoviesPage = () => {
     initHome();
   }, []);
 
-  console.log(writers, director);
   const filteredPhotos = photos.slice(0, 30);
 
   return (
@@ -130,13 +130,16 @@ const MoviesPage = () => {
                     />
                     <p>{videos.length} Videos</p>
                   </div>
-                  <div className="moviesPage__visualBox">
+                  <Link
+                    to={`/photos/${id}/movie/0`}
+                    className="moviesPage__visualBox"
+                  >
                     <FontAwesomeIcon
                       className="moviesPage__headerIcons"
                       icon={faImages}
                     />
                     <p>{photos.length} Photos</p>
-                  </div>
+                  </Link>
                 </div>
               </div>
               <div className="moviesPage__genres">
@@ -153,7 +156,7 @@ const MoviesPage = () => {
                 <div className="moviesPage__director">
                   {director.length > 1 ? <h3>Directors</h3> : <h3>Director</h3>}
                   {director.map((dir) => (
-                    <div className="moviesPage__crewCard">
+                    <div key={dir.id} className="moviesPage__crewCard">
                       <img
                         src={`https://image.tmdb.org/t/p/original${dir.profile_path}`}
                         alt=""
@@ -163,7 +166,7 @@ const MoviesPage = () => {
                   ))}
                   {writers.length > 1 ? <h4>Writers</h4> : <h4>Writer</h4>}
                   {writers.map((wri) => (
-                    <div className="moviesPage__crewCard--writer">
+                    <div key={wri.id} className="moviesPage__crewCard--writer">
                       {wri.profile_path === null ? (
                         <img
                           src="https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png"
@@ -202,12 +205,13 @@ const MoviesPage = () => {
                     Photos <FontAwesomeIcon icon={faChevronRight} />
                   </h2>
                   <div className="moviesPage__photos">
-                    {filteredPhotos.map((photo) => (
+                    {filteredPhotos.map((photo, index) => (
                       <img
-                        key={photo.file_path}
+                        key={index}
                         src={`https://image.tmdb.org/t/p/original${photo.file_path}`}
                         alt=""
                         className="moviesPage__photo"
+                        onClick={() => navigate(`/photos/${id}/movie/${index}`)}
                       />
                     ))}
                   </div>

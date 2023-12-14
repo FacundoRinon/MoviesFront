@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faVideo,
@@ -23,6 +23,8 @@ import "./index.scss";
 
 const SeriesPage = () => {
   const { id } = useParams();
+
+  const navigate = useNavigate();
 
   const [series, setSeries] = useState([]);
   const [videos, setVideos] = useState([]);
@@ -125,13 +127,16 @@ const SeriesPage = () => {
                     />
                     <p>{videos.length} Videos</p>
                   </div>
-                  <div className="seriesPage__visualBox">
+                  <Link
+                    to={`/photos/${id}/tv/0`}
+                    className="seriesPage__visualBox"
+                  >
                     <FontAwesomeIcon
                       className="seriesPage__headerIcons"
                       icon={faImages}
                     />
                     <p>{photos.length} Photos</p>
-                  </div>
+                  </Link>
                 </div>
               </div>
               <div className="seriesPage__genres">
@@ -176,12 +181,13 @@ const SeriesPage = () => {
                     Photos <FontAwesomeIcon icon={faChevronRight} />
                   </h2>
                   <div className="seriesPage__photos">
-                    {filteredPhotos.map((photo) => (
+                    {filteredPhotos.map((photo, index) => (
                       <img
-                        key={photo.file_path}
+                        key={index}
                         src={`https://image.tmdb.org/t/p/original${photo.file_path}`}
                         alt=""
                         className="seriesPage__photo"
+                        onClick={() => navigate(`/photos/${id}/tv/${index}`)}
                       />
                     ))}
                   </div>
