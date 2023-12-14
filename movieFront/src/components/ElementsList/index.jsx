@@ -4,12 +4,12 @@ import ElementCard from "../ElementCard";
 
 import "./index.scss";
 
-const ElementsList = ({ elements }) => {
+const ElementsList = ({ elements, topSeries }) => {
   return (
     <div className="elementsList">
       {elements &&
         elements.map((element) => (
-          <ElementCard key={element.id} element={element} />
+          <ElementCard key={element.id} element={element} series={topSeries} />
         ))}
     </div>
   );

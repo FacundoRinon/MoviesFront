@@ -83,7 +83,7 @@ const Home = () => {
           <div className="home__normalList">
             <h2>Top rated</h2>
             <p>Series</p>
-            <ElementsList elements={topSeries} />
+            <ElementsList elements={topSeries} topSeries={true} />
             <p>Movies</p>
             <ElementsList elements={topRated} />
           </div>

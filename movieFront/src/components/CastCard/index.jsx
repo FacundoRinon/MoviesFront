@@ -3,7 +3,6 @@ import React from "react";
 import "./index.scss";
 
 const CastCard = ({ person }) => {
-  console.log(person);
   return (
     <div className="castCard">
       {person.profile_path === null ? (
