@@ -37,9 +37,10 @@ const MoviesPage = () => {
       try {
         const response = await getMovieById(id);
         const response2 = await getMovieVideos(id);
-        const newVideos = response2.data.results.filter((video) => {
+        const filterVideos = response2.data.results.filter((video) => {
           return !video.name.includes("removed");
         });
+        const newVideos = [...filterVideos].reverse();
         const response3 = await getMovieImages(id);
         const response4 = await getMovieCast(id);
         setMovie(response.data);
@@ -114,7 +115,7 @@ const MoviesPage = () => {
                 />
                 <div className="moviesPage__video">
                   {videos.length > 1 ? (
-                    <VideoPlayer videos={videos} />
+                    <VideoPlayer video={videos[0]} />
                   ) : (
                     <img
                       src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
@@ -123,13 +124,16 @@ const MoviesPage = () => {
                   )}
                 </div>
                 <div className="moviesPage__visualsCol">
-                  <div className="moviesPage__visualBox">
+                  <Link
+                    to={`/videos/${id}/movie/0`}
+                    className="moviesPage__visualBox"
+                  >
                     <FontAwesomeIcon
                       className="moviesPage__headerIcons"
                       icon={faVideo}
                     />
                     <p>{videos.length} Videos</p>
-                  </div>
+                  </Link>
                   <Link
                     to={`/photos/${id}/movie/0`}
                     className="moviesPage__visualBox"

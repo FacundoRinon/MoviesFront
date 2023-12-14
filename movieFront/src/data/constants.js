@@ -5,4 +5,5 @@ export const ROUTES = {
   serie: "series/:id",
   movie: "movies/:id",
   photos: "photos/:id/:media/:position",
+  videos: "videos/:id/:media/:position",
 };

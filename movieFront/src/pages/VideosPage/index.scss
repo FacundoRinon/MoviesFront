@@ -1,0 +1,92 @@
+@import "../../theme/variables.scss";
+.videosPage {
+  width: 100%;
+  background-color: black;
+  color: white;
+  height: 92.2vh;
+  &__backRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &--element {
+      font-size: 2rem;
+      margin: 1rem;
+      cursor: pointer;
+    }
+  }
+  &__selectedPhoto {
+    display: flex;
+    justify-content: center;
+  }
+  &__chevronRow {
+    display: flex;
+    width: 85%;
+    justify-content: space-between;
+    position: absolute;
+    top: 45%;
+    @media (max-width: 850px) {
+      top: 25%;
+      width: 90%;
+      z-index: 15;
+    }
+  }
+  &__chevron {
+    font-size: 3rem;
+    border: 2px solid white;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: rgba(31, 30, 30, 0.514);
+    transition: transform 0.5s;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.1);
+      color: $color-primary;
+    }
+    @media (max-width: 850px) {
+      font-size: 2rem;
+      padding: 1rem;
+    }
+    @media (max-width: 450px) {
+      font-size: 1.5rem;
+      padding: 0.5rem;
+    }
+  }
+  &__container {
+    z-index: 10;
+    height: 35rem;
+    width: 70%;
+    @media (max-width: 850px) {
+      width: 90%;
+      height: 25rem;
+    }
+    @media (max-width: 576px) {
+      width: 100%;
+      height: 15rem;
+    }
+  }
+  &__photosRow {
+    display: none;
+    margin-top: 3rem;
+    overflow: scroll;
+    img {
+      width: 20%;
+      margin: 1rem;
+      @media (max-width: 650px) {
+        width: 40%;
+      }
+      @media (max-width: 420px) {
+        width: 60%;
+      }
+    }
+    @media (max-width: 1000px) {
+      display: flex;
+    }
+  }
+
+  &__spinner {
+    display: flex;
+    height: 90%;
+    justify-content: center;
+    align-items: center;
+  }
+}
