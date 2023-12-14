@@ -167,7 +167,7 @@ const SeriesPage = () => {
                       <FontAwesomeIcon icon={faChevronRight} />
                     </h2>
                     <p>Most recent</p>
-                    {series.last_last_episode_to_air ? (
+                    {series.last_episode_to_air ? (
                       <EpisodeCard episode={series.last_episode_to_air} />
                     ) : (
                       <p>Coming soon</p>
