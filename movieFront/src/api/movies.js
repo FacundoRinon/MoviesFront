@@ -24,6 +24,18 @@ const getTrendingMovies = () => {
   return instance.get(`trending/movie/week`);
 };
 
+const getMovieVideos = (movieId) => {
+  return instance.get(`movie/${movieId}/videos`);
+};
+
+const getMovieImages = (movieId) => {
+  return instance.get(`movie/${movieId}/images`);
+};
+
+const getMovieCast = (movieId) => {
+  return instance.get(`movie/${movieId}/credits`);
+};
+
 export {
   getMovies,
   getMovieById,
@@ -31,4 +43,7 @@ export {
   getUpcomingMovies,
   getTopRated,
   getTrendingMovies,
+  getMovieVideos,
+  getMovieImages,
+  getMovieCast,
 };

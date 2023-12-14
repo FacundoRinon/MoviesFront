@@ -5,9 +5,9 @@ import { faStar, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 import "./index.scss";
 
-const ElementCard = ({ element }) => {
+const ElementCard = ({ element, series }) => {
   const linkTo =
-    element.media_type === "tv"
+    element.media_type === "tv" || element.media_type === "Tv" || series
       ? `/series/${element.id}`
       : `/movies/${element.id}`;
 

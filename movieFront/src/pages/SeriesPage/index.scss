@@ -204,7 +204,7 @@
   &__photos {
     display: flex;
     flex-wrap: wrap;
-    max-height: 50rem;
+    max-height: 53rem;
     justify-content: center;
     overflow: scroll;
     @media (max-width: 576px) {
@@ -212,7 +212,7 @@
       justify-content: start;
     }
     @media (max-width: 800px) {
-      max-height: 105rem;
+      max-height: 99rem;
     }
   }
 
@@ -221,7 +221,7 @@
     margin-top: 1rem;
     @media (max-width: 576px) {
       margin-right: 1rem;
-      width: 60%;
+      width: 80%;
     }
   }
 

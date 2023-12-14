@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faVideo,
   faImages,
-  faChevronLeft,
   faChevronRight,
   faStar as solidStar,
 } from "@fortawesome/free-solid-svg-icons";

@@ -1,0 +1,294 @@
+@import "../../theme/variables.scss";
+
+.moviesPage {
+  width: 100%;
+  &__section1 {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__container {
+    width: 91%;
+  }
+  &__presentation {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+
+  &__presentationInfo {
+    & h1 {
+      margin: 0.2rem;
+      font-size: 2.5rem;
+    }
+  }
+
+  &__presentationInfoRow {
+    small {
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+    }
+  }
+
+  &__headerIcons {
+    font-size: 1.5rem;
+    &--yellow {
+      font-size: 1.5rem;
+      color: $color-primary;
+    }
+  }
+
+  &__presentationScore {
+    display: flex;
+  }
+
+  &__score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  &__visuals {
+    display: flex;
+    flex-direction: row;
+    max-height: 28.5rem;
+    width: 100%;
+    margin-top: 1rem;
+    @media (max-width: 800px) {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+
+  &__poster {
+    width: 22%;
+    @media (max-width: 800px) {
+      width: 30%;
+    }
+    @media (max-width: 450px) {
+      width: 50%;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__video {
+    width: 59%;
+    max-height: 28.5rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    & img {
+      width: 100%;
+    }
+    @media (max-width: 800px) {
+      width: 66%;
+    }
+    @media (max-width: 450px) {
+      width: 100%;
+    }
+  }
+
+  &__visualsCol {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 19%;
+    max-height: 28.5rem;
+    @media (max-width: 800px) {
+      flex-direction: row;
+      width: 100%;
+    }
+  }
+
+  &__visualBox {
+    background-color: $color-secondary;
+    width: 100%;
+    height: 49%;
+    max-height: 14rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+      background-color: rgb(54, 53, 53);
+    }
+
+    @media (max-width: 800px) {
+      flex-direction: row;
+      margin: 0;
+      height: auto;
+      width: 50%;
+      margin-top: 0.5rem;
+      margin-left: 0.25rem;
+      margin-right: 0.25rem;
+      border-radius: 15px;
+      p {
+        margin-left: 0.5rem;
+      }
+    }
+  }
+
+  &__genres {
+    margin-top: 1rem;
+    display: flex;
+    overflow: scroll;
+    @media (max-width: 450px) {
+      margin-top: 6rem;
+    }
+  }
+
+  &__genre {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border: 1px solid white;
+    border-radius: 20px;
+  }
+
+  &__overview {
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: space-between;
+    @media (max-width: 576px) {
+      flex-wrap: wrap;
+    }
+    p {
+      text-align: justify;
+      width: 50%;
+      @media (max-width: 576px) {
+        width: 100%;
+      }
+    }
+  }
+
+  &__director {
+    color: white;
+    width: 45%;
+    h3,
+    h4 {
+      margin: 0;
+    }
+    @media (max-width: 576px) {
+      width: 100%;
+    }
+  }
+
+  &__crewCard {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $color-primary;
+    margin-bottom: 1rem;
+    img {
+      object-fit: cover;
+      min-width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      margin: 0.5rem;
+    }
+    p {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+    &--writer {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid $color-primary;
+
+      img {
+        object-fit: cover;
+        min-width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        margin: 0.5rem;
+      }
+      p {
+        margin: 0;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  &__spinner {
+    height: 92.3vh;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__section2 {
+    background-color: white;
+    color: black;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__dataSection {
+    display: flex;
+    @media (max-width: 576px) {
+      flex-direction: column-reverse;
+    }
+  }
+
+  &__data {
+    width: 70%;
+    @media (max-width: 576px) {
+      width: 100%;
+    }
+  }
+
+  &__castSection {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__photosCol {
+    width: 30%;
+    margin-bottom: 3rem;
+    @media (max-width: 576px) {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__photos {
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 35rem;
+    justify-content: center;
+    overflow: scroll;
+    @media (max-width: 576px) {
+      flex-wrap: nowrap;
+      justify-content: start;
+    }
+    @media (max-width: 800px) {
+      max-height: 79.5rem;
+    }
+  }
+
+  &__photo {
+    width: calc(100% - 1rem);
+    margin-top: 1rem;
+    @media (max-width: 576px) {
+      margin-right: 1rem;
+      width: 60%;
+    }
+  }
+
+  &__clickRow {
+    cursor: pointer;
+    &:hover {
+      color: $color-primary;
+    }
+  }
+}
