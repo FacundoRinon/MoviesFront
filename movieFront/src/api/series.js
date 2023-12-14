@@ -1,5 +1,9 @@
 import instance from "./config";
 
+const getSeries = (pageNumber) => {
+  return instance.get("discover/tv", { params: { page: pageNumber } });
+};
+
 const getSerieById = (serieId) => {
   return instance.get(`tv/${serieId}`);
 };
@@ -25,6 +29,7 @@ const getSeriesCast = (seriesId) => {
 };
 
 export {
+  getSeries,
   getSerieById,
   getSeriesVideosById,
   topRatedSeries,
