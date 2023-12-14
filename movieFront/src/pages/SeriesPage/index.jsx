@@ -37,9 +37,10 @@ const SeriesPage = () => {
       try {
         const response = await getSerieById(id);
         const response2 = await getSeriesVideosById(id);
-        const newVideos = response2.data.results.filter((video) => {
+        const filterVideos = response2.data.results.filter((video) => {
           return !video.name.includes("removed");
         });
+        const newVideos = [...filterVideos].reverse();
         const response3 = await getSeriesImages(id);
         const response4 = await getSeriesCast(id);
         setSeries(response.data);
@@ -111,7 +112,7 @@ const SeriesPage = () => {
                 />
                 <div className="seriesPage__video">
                   {videos.length > 1 ? (
-                    <VideoPlayer videos={videos} />
+                    <VideoPlayer video={videos[0]} />
                   ) : (
                     <img
                       src={`https://image.tmdb.org/t/p/original${series.backdrop_path}`}
@@ -120,13 +121,16 @@ const SeriesPage = () => {
                   )}
                 </div>
                 <div className="seriesPage__visualsCol">
-                  <div className="seriesPage__visualBox">
+                  <Link
+                    to={`/videos/${id}/tv/0`}
+                    className="seriesPage__visualBox"
+                  >
                     <FontAwesomeIcon
                       className="seriesPage__headerIcons"
                       icon={faVideo}
                     />
                     <p>{videos.length} Videos</p>
-                  </div>
+                  </Link>
                   <Link
                     to={`/photos/${id}/tv/0`}
                     className="seriesPage__visualBox"
@@ -163,7 +167,11 @@ const SeriesPage = () => {
                       <FontAwesomeIcon icon={faChevronRight} />
                     </h2>
                     <p>Most recent</p>
-                    <EpisodeCard episode={series.last_episode_to_air} />
+                    {series.last_last_episode_to_air ? (
+                      <EpisodeCard episode={series.last_episode_to_air} />
+                    ) : (
+                      <p>Coming soon</p>
+                    )}
                   </div>
                   <div className="seriesPage__cast">
                     <h2 className="seriesPage__clickRow">

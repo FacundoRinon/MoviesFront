@@ -8,10 +8,14 @@ import "./index.scss";
 const EpisodeCard = ({ episode }) => {
   return (
     <div className="episodeCard">
-      <img
-        src={`https://image.tmdb.org/t/p/original${episode.still_path}`}
-        alt=""
-      />
+      {episode.still_path ? (
+        <img
+          src={`https://image.tmdb.org/t/p/original${episode.still_path}`}
+          alt=""
+        />
+      ) : (
+        <h2>No still</h2>
+      )}
       <div className="episodeCard__content">
         <div className="episodeCard__header">
           <h3>
