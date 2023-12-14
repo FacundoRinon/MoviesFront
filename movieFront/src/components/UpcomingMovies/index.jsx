@@ -55,10 +55,18 @@ const UpcomingMovies = ({ list }) => {
           />
         )}
         <div className="upcomingMovies__selectedInfo">
-          <img
-            src={`https://image.tmdb.org/t/p/original${list[selectedMovie].poster_path}`}
-            alt=""
-          />
+          {`${list[selectedMovie].poster_path}` !== "null" ||
+          !`${list[selectedMovie].poster_path}` ? (
+            <img
+              src={`https://image.tmdb.org/t/p/original${list[selectedMovie].poster_path}`}
+              alt=""
+            />
+          ) : (
+            <img
+              src={`https://image.tmdb.org/t/p/original${list[selectedMovie].backdrop_path}`}
+              alt=""
+            />
+          )}
           <div className="upcomingMovies__info">
             <h2>{list[selectedMovie].title}</h2>
             <p>Realese date: {list[selectedMovie].release_date}</p>

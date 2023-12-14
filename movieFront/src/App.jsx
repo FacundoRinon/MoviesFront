@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import SeriesPage from "./pages/SeriesPage";
 import MoviesPage from "./pages/MoviesPage";
+import PhotosPage from "./pages/PhotosPage";
 
 import "./App.css";
 
@@ -19,6 +20,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path={ROUTES.serie} element={<SeriesPage />} />
         <Route path={ROUTES.movie} element={<MoviesPage />} />
+        <Route path={ROUTES.photos} element={<PhotosPage />} />
       </Route>
     </Routes>
   );
