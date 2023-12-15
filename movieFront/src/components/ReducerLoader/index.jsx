@@ -16,7 +16,7 @@ const ReducerLoader = () => {
         const allMovies = [];
         const allSeries = [];
 
-        for (let i = 1; i < 16; i++) {
+        for (let i = 1; i < 71; i++) {
           const response = await getMovies(i);
           const moviesOnPage = response.data.results.map((movie) => ({
             id: movie.id,

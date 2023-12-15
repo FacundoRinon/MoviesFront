@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSearch,
@@ -11,6 +12,30 @@ import { useNavigate } from "react-router-dom";
 import "./index.scss";
 
 const Navbar = () => {
+  const movies = useSelector((state) => state.movies);
+  const series = useSelector((state) => state.series);
+
+  // console.log("movies: ", movies);
+  // console.log("series", series);
+
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchValue, setSearchValue] = useState([]);
+  console.log("results", searchResults);
+
+  useEffect(() => {
+    if (searchValue.length > 0) {
+      const filteredMovies = movies.filter((movie) =>
+        movie.title.toLowerCase().includes(searchValue)
+      );
+      const filteredSeries = series.filter((series) =>
+        series.title.toLowerCase().includes(searchValue)
+      );
+      setSearchResults([...filteredMovies, ...filteredSeries]);
+    } else {
+      setSearchResults([]);
+    }
+  }, [searchValue]);
+
   const navigate = useNavigate();
 
   return (
@@ -22,7 +47,13 @@ const Navbar = () => {
           <p className="navbar__menu">
             <FontAwesomeIcon className="navbar__icon" icon={faBars} /> Menu
           </p>
-          <input id="search" placeholder="Search IMDb" type="text" />
+          <input
+            id="search"
+            placeholder="Search IMDb"
+            type="text"
+            value={searchValue}
+            onChange={(event) => setSearchValue(event.target.value)}
+          />
         </div>
         <div className="navbar__rightItems">
           <p className="navbar__watchlist">
