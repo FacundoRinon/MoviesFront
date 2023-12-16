@@ -64,7 +64,7 @@ const MoviesPage = () => {
       }
     };
     initHome();
-  }, []);
+  }, [id]);
 
   const filteredPhotos = photos.slice(0, 30);
 

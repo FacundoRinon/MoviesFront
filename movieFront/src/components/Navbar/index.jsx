@@ -9,18 +9,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
+import SearchList from "../SearchList/indec";
+
 import "./index.scss";
 
 const Navbar = () => {
   const movies = useSelector((state) => state.movies);
   const series = useSelector((state) => state.series);
 
-  // console.log("movies: ", movies);
-  // console.log("series", series);
-
   const [searchResults, setSearchResults] = useState([]);
   const [searchValue, setSearchValue] = useState([]);
-  console.log("results", searchResults);
 
   useEffect(() => {
     if (searchValue.length > 0) {
@@ -39,38 +37,49 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="navbar">
-      <div className="navbar__content">
-        <div className="navbar__leftItems">
-          <FontAwesomeIcon className="navbar__bars" icon={faBars} />
-          <img onClick={() => navigate("/")} src="../public/logo.png" alt="" />
-          <p className="navbar__menu">
-            <FontAwesomeIcon className="navbar__icon" icon={faBars} /> Menu
-          </p>
-          <input
-            id="search"
-            placeholder="Search IMDb"
-            type="text"
-            value={searchValue}
-            onChange={(event) => setSearchValue(event.target.value)}
-          />
-        </div>
-        <div className="navbar__rightItems">
-          <p className="navbar__watchlist">
-            <FontAwesomeIcon className="navbar__icon" icon={faPlus} />
-            Watchlist
-          </p>
-          <FontAwesomeIcon className="navbar__search" icon={faSearch} />
-          <p className="navbar__user">
+    <>
+      <div className="navbar">
+        <div className="navbar__content">
+          <div className="navbar__leftItems">
+            <FontAwesomeIcon className="navbar__bars" icon={faBars} />
             <img
-              src="https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png"
+              onClick={() => navigate("/")}
+              src="../public/logo.png"
               alt=""
             />
-            User <FontAwesomeIcon className="navbar__down" icon={faCaretDown} />
-          </p>
+            <p className="navbar__menu">
+              <FontAwesomeIcon className="navbar__icon" icon={faBars} /> Menu
+            </p>
+            <input
+              id="search"
+              placeholder="Search IMDb"
+              type="text"
+              value={searchValue}
+              onChange={(event) => setSearchValue(event.target.value)}
+            />
+          </div>
+          <div className="navbar__rightItems">
+            <SearchList
+              results={searchResults}
+              setSearchValue={setSearchValue}
+            />
+            <p className="navbar__watchlist">
+              <FontAwesomeIcon className="navbar__icon" icon={faPlus} />
+              Watchlist
+            </p>
+            <FontAwesomeIcon className="navbar__search" icon={faSearch} />
+            <p className="navbar__user">
+              <img
+                src="https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png"
+                alt=""
+              />
+              User{" "}
+              <FontAwesomeIcon className="navbar__down" icon={faCaretDown} />
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
