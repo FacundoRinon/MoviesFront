@@ -180,7 +180,10 @@ const SeriesPage = () => {
                     )}
                   </div>
                   <div className="seriesPage__cast">
-                    <h2 className="seriesPage__clickRow">
+                    <h2
+                      className="seriesPage__clickRow"
+                      onClick={() => navigate(`/cast/${id}`)}
+                    >
                       Top cast <FontAwesomeIcon icon={faChevronRight} />
                     </h2>
                     <div className="seriesPage__castSection">
