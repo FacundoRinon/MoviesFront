@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 import { getSerieById, getSeriesCast } from "../../api/series";
+import { getMovieById, getMovieCast } from "../../api/movies";
 import CastCard from "../../components/CastCard";
 import Footer from "../../components/Footer";
 import Spinner from "../../components/Spinner";
@@ -11,20 +12,30 @@ import Spinner from "../../components/Spinner";
 import "./index.scss";
 
 const CastPage = () => {
-  const { id } = useParams();
+  const { id, media } = useParams();
 
   const navigate = useNavigate();
 
-  const [series, setSeries] = useState(null);
+  const [back, setBack] = useState("");
+  const [visual, setVisual] = useState(null);
   const [personal, setPersonal] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await getSerieById(id);
-        const response2 = await getSeriesCast(id);
-        setSeries(response.data);
-        setPersonal(response2.data);
+        if (media === "tv") {
+          const response = await getSerieById(id);
+          const response2 = await getSeriesCast(id);
+          setVisual(response.data);
+          setPersonal(response2.data);
+          setBack("series");
+        } else {
+          const response = await getMovieById(id);
+          const response2 = await getMovieCast(id);
+          setVisual(response.data);
+          setPersonal(response2.data);
+          setBack(media);
+        }
       } catch (error) {
         console.log(error);
       }
@@ -32,24 +43,27 @@ const CastPage = () => {
     getData();
   }, []);
 
+  console.log(personal.crew);
+  console.log(personal.cast);
+
   return (
     <div className="castPage">
-      {series ? (
+      {visual ? (
         <>
           <div className="castPage__section1">
             <div className="castPage__container">
               <div className="castPage__backRow">
-                <p onClick={() => navigate(`/series/${id}`)}>
+                <p onClick={() => navigate(`/${back}/${id}`)}>
                   <FontAwesomeIcon icon={faArrowLeft} /> Back
                 </p>
               </div>
               <div className="castPage__header">
                 <img
-                  src={`https://image.tmdb.org/t/p/original${series.poster_path}`}
+                  src={`https://image.tmdb.org/t/p/original${visual.poster_path}`}
                   alt=""
                 />
                 <div className="castPage__headerInfo">
-                  <p>{series.name}</p>
+                  <p>{visual.name || visual.title}</p>
                   <h2>Cast list</h2>
                 </div>
               </div>
@@ -67,11 +81,10 @@ const CastPage = () => {
                 ))}
               </div>
               <p className="castPage__specification">Complete Crew</p>
-
               <div className="castPage__members">
-                {personal.crew.map((person) => (
+                {personal.crew.map((person2) => (
                   <div className="castPage__person">
-                    <CastCard key={person.id} person={person} />
+                    <CastCard key={person2.id} person={person2} />
                   </div>
                 ))}
               </div>

@@ -67,7 +67,10 @@ const SeriesPage = () => {
           <div className="seriesPage__section1">
             <div className="seriesPage__container">
               <div className="seriesPage__episodesRow">
-                <p className="seriesPage__clickRow">
+                <p
+                  className="seriesPage__clickRow"
+                  onClick={() => navigate(`/episodes/${id}`)}
+                >
                   Episode guide {series.number_of_episodes}{" "}
                   <FontAwesomeIcon icon={faChevronRight} />
                 </p>
@@ -182,7 +185,7 @@ const SeriesPage = () => {
                   <div className="seriesPage__cast">
                     <h2
                       className="seriesPage__clickRow"
-                      onClick={() => navigate(`/cast/${id}`)}
+                      onClick={() => navigate(`/cast/${id}/tv`)}
                     >
                       Top cast <FontAwesomeIcon icon={faChevronRight} />
                     </h2>

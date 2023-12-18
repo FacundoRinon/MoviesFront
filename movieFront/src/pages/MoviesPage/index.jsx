@@ -195,7 +195,10 @@ const MoviesPage = () => {
               <div className="moviesPage__dataSection">
                 <div className="moviesPage__data">
                   <div className="moviesPage__cast">
-                    <h2 className="moviesPage__clickRow">
+                    <h2
+                      className="moviesPage__clickRow"
+                      onClick={() => navigate(`/cast/${id}/movies`)}
+                    >
                       Top cast <FontAwesomeIcon icon={faChevronRight} />
                     </h2>
                     <div className="moviesPage__castSection">

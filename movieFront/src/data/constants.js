@@ -7,5 +7,5 @@ export const ROUTES = {
   photos: "photos/:id/:media/:position",
   videos: "videos/:id/:media/:position",
   episodes: "/episodes/:id",
-  cast: "/cast/:id",
+  cast: "/cast/:id/:media",
 };
