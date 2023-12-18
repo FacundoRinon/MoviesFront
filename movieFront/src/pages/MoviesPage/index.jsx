@@ -35,6 +35,7 @@ const MoviesPage = () => {
   useEffect(() => {
     const initHome = async () => {
       try {
+        setMovie([]);
         const response = await getMovieById(id);
         const response2 = await getMovieVideos(id);
         const filterVideos = response2.data.results.filter((video) => {

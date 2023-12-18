@@ -42,7 +42,6 @@ const VideosPage = () => {
     initVideos();
   }, []);
 
-  console.log(videos);
   const increaseSelected = () => {
     if (selected < videos.length - 1) {
       setSelected(parseInt(selected) + 1);

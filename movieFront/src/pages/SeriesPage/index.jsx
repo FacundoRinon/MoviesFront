@@ -35,6 +35,7 @@ const SeriesPage = () => {
   useEffect(() => {
     const initHome = async () => {
       try {
+        setSeries([]);
         const response = await getSerieById(id);
         const response2 = await getSeriesVideosById(id);
         const filterVideos = response2.data.results.filter((video) => {

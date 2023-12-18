@@ -6,7 +6,6 @@ import "./index.scss";
 
 const SearchList = ({ results, setSearchValue }) => {
   const showResults = results.slice(0, 6);
-  console.log(showResults);
 
   return (
     <>

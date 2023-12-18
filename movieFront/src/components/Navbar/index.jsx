@@ -6,6 +6,7 @@ import {
   faPlus,
   faBars,
   faCaretDown,
+  faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
@@ -18,7 +19,8 @@ const Navbar = () => {
   const series = useSelector((state) => state.series);
 
   const [searchResults, setSearchResults] = useState([]);
-  const [searchValue, setSearchValue] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
+  const [movilSearch, setMovilSearch] = useState(false);
 
   useEffect(() => {
     if (searchValue.length > 0) {
@@ -33,6 +35,12 @@ const Navbar = () => {
       setSearchResults([]);
     }
   }, [searchValue]);
+
+  const closeSearch = () => {
+    setMovilSearch(false);
+    setSearchResults([]);
+    setSearchValue("");
+  };
 
   const navigate = useNavigate();
 
@@ -63,7 +71,11 @@ const Navbar = () => {
               <FontAwesomeIcon className="navbar__icon" icon={faPlus} />
               Watchlist
             </p>
-            <FontAwesomeIcon className="navbar__search" icon={faSearch} />
+            <FontAwesomeIcon
+              className="navbar__search"
+              icon={faSearch}
+              onClick={() => setMovilSearch(true)}
+            />
             <p className="navbar__user">
               <img
                 src="https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png"
@@ -74,6 +86,21 @@ const Navbar = () => {
             </p>
           </div>
         </div>
+        {movilSearch && (
+          <div className="navbar__movilSearch">
+            <input
+              type="text"
+              placeholder="Search IMDb"
+              value={searchValue}
+              onChange={(event) => setSearchValue(event.target.value)}
+            />
+            <FontAwesomeIcon
+              className="navbar__close"
+              icon={faTimes}
+              onClick={() => closeSearch()}
+            />
+          </div>
+        )}
       </div>
       <SearchList results={searchResults} setSearchValue={setSearchValue} />
     </>
