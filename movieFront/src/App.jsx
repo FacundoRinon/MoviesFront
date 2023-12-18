@@ -9,6 +9,7 @@ import SeriesPage from "./pages/SeriesPage";
 import MoviesPage from "./pages/MoviesPage";
 import PhotosPage from "./pages/PhotosPage";
 import VideosPage from "./pages/VideosPage";
+import EpisodesPage from "./pages/EpisodesPage";
 
 import "./App.css";
 
@@ -23,6 +24,7 @@ function App() {
         <Route path={ROUTES.movie} element={<MoviesPage />} />
         <Route path={ROUTES.photos} element={<PhotosPage />} />
         <Route path={ROUTES.videos} element={<VideosPage />} />
+        <Route path={ROUTES.episodes} element={<EpisodesPage />} />
       </Route>
     </Routes>
   );
