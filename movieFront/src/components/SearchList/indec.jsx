@@ -11,14 +11,16 @@ const SearchList = ({ results, setSearchValue }) => {
   return (
     <>
       <div className="searchList">
-        {results.length > 0 &&
-          showResults.map((result) => (
-            <SearchResult
-              key={result.id}
-              result={result}
-              setSearchValue={setSearchValue}
-            />
-          ))}
+        <div className="searchList__content">
+          {results.length > 0 &&
+            showResults.map((result) => (
+              <SearchResult
+                key={result.id}
+                result={result}
+                setSearchValue={setSearchValue}
+              />
+            ))}
+        </div>
       </div>
     </>
   );

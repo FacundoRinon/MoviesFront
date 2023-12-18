@@ -59,10 +59,6 @@ const Navbar = () => {
             />
           </div>
           <div className="navbar__rightItems">
-            <SearchList
-              results={searchResults}
-              setSearchValue={setSearchValue}
-            />
             <p className="navbar__watchlist">
               <FontAwesomeIcon className="navbar__icon" icon={faPlus} />
               Watchlist
@@ -79,6 +75,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+      <SearchList results={searchResults} setSearchValue={setSearchValue} />
     </>
   );
 };

@@ -1,6 +1,13 @@
 .searchList {
   position: fixed;
   top: 3.6rem;
-  left: 19%;
-  background-color: white;
+  width: 100%;
+  left: 15.5rem;
+  @media (max-width: 850px) {
+    left: 9.5rem;
+  }
+  &__content {
+    background-color: white;
+    width: 50%;
+  }
 }
