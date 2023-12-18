@@ -43,9 +43,6 @@ const CastPage = () => {
     getData();
   }, []);
 
-  console.log(personal.crew);
-  console.log(personal.cast);
-
   return (
     <div className="castPage">
       {visual ? (
