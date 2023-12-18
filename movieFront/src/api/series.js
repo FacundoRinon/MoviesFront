@@ -28,6 +28,10 @@ const getSeriesCast = (seriesId) => {
   return instance.get(`tv/${seriesId}/credits`);
 };
 
+const getSeason = (seriesId, season) => {
+  return instance.get(`tv/${seriesId}/season/${season}`);
+};
+
 export {
   getSeries,
   getSerieById,
@@ -36,4 +40,5 @@ export {
   getTrending,
   getSeriesImages,
   getSeriesCast,
+  getSeason,
 };

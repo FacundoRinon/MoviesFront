@@ -28,7 +28,6 @@ const SeriesPage = () => {
 
   const [series, setSeries] = useState([]);
   const [videos, setVideos] = useState([]);
-  const [episodes, setEpisodes] = useState([]);
   const [photos, setPhotos] = useState([]);
   const [cast, setCast] = useState([]);
 
@@ -163,13 +162,19 @@ const SeriesPage = () => {
               <div className="seriesPage__dataSection">
                 <div className="seriesPage__data">
                   <div className="seriesPage__episodes">
-                    <h2 className="seriesPage__clickRow">
+                    <h2
+                      className="seriesPage__clickRow"
+                      onClick={() => navigate(`/episodes/${id}`)}
+                    >
                       {series.number_of_episodes} Episodes{" "}
                       <FontAwesomeIcon icon={faChevronRight} />
                     </h2>
                     <p>Most recent</p>
                     {series.last_episode_to_air ? (
-                      <EpisodeCard episode={series.last_episode_to_air} />
+                      <EpisodeCard
+                        episode={series.last_episode_to_air}
+                        backdrop={series.backdrop_path}
+                      />
                     ) : (
                       <p>Coming soon</p>
                     )}

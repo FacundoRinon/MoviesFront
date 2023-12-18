@@ -6,4 +6,5 @@ export const ROUTES = {
   movie: "movies/:id",
   photos: "photos/:id/:media/:position",
   videos: "videos/:id/:media/:position",
+  episodes: "/episodes/:id",
 };

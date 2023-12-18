@@ -5,7 +5,7 @@ import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
 
 import "./index.scss";
 
-const EpisodeCard = ({ episode }) => {
+const EpisodeCard = ({ episode, backdrop }) => {
   return (
     <div className="episodeCard">
       {episode.still_path ? (
@@ -13,6 +13,8 @@ const EpisodeCard = ({ episode }) => {
           src={`https://image.tmdb.org/t/p/original${episode.still_path}`}
           alt=""
         />
+      ) : backdrop ? (
+        <img src={`https://image.tmdb.org/t/p/original${backdrop}`} alt="" />
       ) : (
         <h2>No still</h2>
       )}
