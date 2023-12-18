@@ -12,6 +12,7 @@ import UpcomingMovies from "../../components/UpcomingMovies";
 import ElementsList from "../../components/ElementsList";
 import Footer from "../../components/Footer";
 import Spinner from "../../components/Spinner";
+import ReducerLoader from "../../components/ReducerLoader";
 
 import "./index.scss";
 
@@ -92,6 +93,7 @@ const Home = () => {
             <p>Popular movies in IMDb</p>
             <ElementsList elements={popularMovies} />
           </div>
+          <ReducerLoader />
           <Footer />
         </div>
       ) : (

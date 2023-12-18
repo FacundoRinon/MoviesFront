@@ -35,6 +35,7 @@ const MoviesPage = () => {
   useEffect(() => {
     const initHome = async () => {
       try {
+        setMovie([]);
         const response = await getMovieById(id);
         const response2 = await getMovieVideos(id);
         const filterVideos = response2.data.results.filter((video) => {
@@ -64,7 +65,7 @@ const MoviesPage = () => {
       }
     };
     initHome();
-  }, []);
+  }, [id]);
 
   const filteredPhotos = photos.slice(0, 30);
 
@@ -125,7 +126,7 @@ const MoviesPage = () => {
                 </div>
                 <div className="moviesPage__visualsCol">
                   <Link
-                    to={`/videos/${id}/movie/0`}
+                    to={`/videos/${id}/movies/0`}
                     className="moviesPage__visualBox"
                   >
                     <FontAwesomeIcon
@@ -135,7 +136,7 @@ const MoviesPage = () => {
                     <p>{videos.length} Videos</p>
                   </Link>
                   <Link
-                    to={`/photos/${id}/movie/0`}
+                    to={`/photos/${id}/movies/0`}
                     className="moviesPage__visualBox"
                   >
                     <FontAwesomeIcon
