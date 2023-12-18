@@ -19,6 +19,7 @@ const PhotosPage = () => {
   const { position } = useParams();
   const navigate = useNavigate();
 
+  const [back, setBack] = useState("");
   const [photos, setPhotos] = useState([]);
   const [selected, setSelected] = useState(position);
 
@@ -28,9 +29,11 @@ const PhotosPage = () => {
         if (media === "tv") {
           const response = await getSeriesImages(id);
           setPhotos(response.data.backdrops);
+          setBack("series");
         } else {
           const response = await getMovieImages(id);
           setPhotos(response.data.backdrops);
+          setBack(media);
         }
       } catch (error) {
         console.log(error);
@@ -63,7 +66,7 @@ const PhotosPage = () => {
             <FontAwesomeIcon
               className="photosPage__backRow--element"
               icon={faArrowLeft}
-              onClick={() => navigate(-1)}
+              onClick={() => navigate(`/${back}/${id}`)}
             />
             <p className="photosPage__backRow--element">
               {parseInt(selected) + 1}/{photos.length}

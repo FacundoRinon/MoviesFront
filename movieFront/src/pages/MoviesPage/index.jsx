@@ -126,7 +126,7 @@ const MoviesPage = () => {
                 </div>
                 <div className="moviesPage__visualsCol">
                   <Link
-                    to={`/videos/${id}/movie/0`}
+                    to={`/videos/${id}/movies/0`}
                     className="moviesPage__visualBox"
                   >
                     <FontAwesomeIcon
@@ -136,7 +136,7 @@ const MoviesPage = () => {
                     <p>{videos.length} Videos</p>
                   </Link>
                   <Link
-                    to={`/photos/${id}/movie/0`}
+                    to={`/photos/${id}/movies/0`}
                     className="moviesPage__visualBox"
                   >
                     <FontAwesomeIcon

@@ -20,6 +20,7 @@ const VideosPage = () => {
   const { position } = useParams();
   const navigate = useNavigate();
 
+  const [back, setBack] = useState("");
   const [videos, setVideos] = useState([]);
   const [selected, setSelected] = useState(position);
 
@@ -30,17 +31,19 @@ const VideosPage = () => {
           const response = await getSeriesVideosById(id);
           const newArray = [...response.data.results].reverse();
           setVideos(newArray);
+          setBack("series");
         } else {
           const response = await getMovieVideos(id);
           const newArray = [...response.data.results].reverse();
           setVideos(newArray);
+          setBack(media);
         }
       } catch (error) {
         console.log(error);
       }
     };
     initVideos();
-  }, []);
+  }, [selected]);
 
   const increaseSelected = () => {
     if (selected < videos.length - 1) {
@@ -52,8 +55,10 @@ const VideosPage = () => {
 
   const decreaseSelected = () => {
     if (selected > 0) {
+      setVideos([]);
       setSelected(parseInt(selected) - 1);
     } else {
+      setVideos([]);
       setSelected(videos.length - 1);
     }
   };
@@ -66,7 +71,7 @@ const VideosPage = () => {
             <FontAwesomeIcon
               className="videosPage__backRow--element"
               icon={faArrowLeft}
-              onClick={() => navigate(-1)}
+              onClick={() => navigate(`/${back}/${id}`)}
             />
             <p className="videosPage__backRow--element">
               {parseInt(selected) + 1}/{videos.length}
