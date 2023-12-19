@@ -3,6 +3,8 @@ import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 
+import { setToken } from "../../redux/userSlice";
+
 import "./index.scss";
 
 const Login = () => {
