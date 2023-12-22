@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSearch,
@@ -11,16 +11,19 @@ import {
 import { useNavigate } from "react-router-dom";
 
 import SearchList from "../SearchList/indec";
+import { removeToken } from "../../redux/userSlice";
 
 import "./index.scss";
 
 const Navbar = () => {
+  const user = useSelector((state) => state.user);
   const movies = useSelector((state) => state.movies);
   const series = useSelector((state) => state.series);
 
   const [searchResults, setSearchResults] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [movilSearch, setMovilSearch] = useState(false);
+  const [menu, setMenu] = useState(false);
 
   useEffect(() => {
     if (searchValue.length > 0) {
@@ -43,6 +46,20 @@ const Navbar = () => {
   };
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  async function handleLogout() {
+    dispatch(removeToken());
+    navigate("/login");
+  }
+
+  function toggleMenu() {
+    if (menu) {
+      setMenu(false);
+    } else {
+      setMenu(true);
+    }
+  }
 
   return (
     <>
@@ -76,14 +93,18 @@ const Navbar = () => {
               icon={faSearch}
               onClick={() => setMovilSearch(true)}
             />
-            <p className="navbar__user">
-              <img
-                src="https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png"
-                alt=""
-              />
-              User{" "}
-              <FontAwesomeIcon className="navbar__down" icon={faCaretDown} />
-            </p>
+            {user ? (
+              <p className="navbar__user" onClick={() => toggleMenu(true)}>
+                <img
+                  src={`${import.meta.env.VITE_IMG_URL}/${user.avatar}`}
+                  alt=""
+                />
+                {user.name}{" "}
+                <FontAwesomeIcon className="navbar__down" icon={faCaretDown} />
+              </p>
+            ) : (
+              <p onClick={() => navigate("/login")}>Sing In</p>
+            )}
           </div>
         </div>
         {movilSearch && (
@@ -102,6 +123,12 @@ const Navbar = () => {
           </div>
         )}
       </div>
+      {menu && (
+        <div className="navbar__userMenu">
+          <p>Profile</p>
+          <p onClick={() => handleLogout()}>Sign Out</p>
+        </div>
+      )}
       <SearchList results={searchResults} setSearchValue={setSearchValue} />
     </>
   );
