@@ -11,7 +11,6 @@ const userSlice = createSlice({
       return null;
     },
     toggleWatchlist(state, action) {
-      console.log("payload en reducer", action.payload);
       try {
         if (state && state.favoriteMovies) {
           const { element_id } = action.payload;

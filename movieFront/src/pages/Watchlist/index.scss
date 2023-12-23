@@ -1,0 +1,14 @@
+@import "../../theme/variables.scss";
+.watchlist {
+  background-color: rgb(184, 182, 182);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  min-height: 90vh;
+
+  &__container {
+    width: 75%;
+    padding: 1rem;
+    background-color: white;
+  }
+}

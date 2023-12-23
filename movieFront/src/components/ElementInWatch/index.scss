@@ -1,0 +1,59 @@
+@import "../../theme/variables.scss";
+.elementInWatch {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  border-top: 1px solid $color-secondary;
+  display: flex;
+
+  &__img {
+    max-height: 10rem;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__trash {
+    color: red;
+    border: 2px solid red;
+    padding: 0.5rem;
+    border-radius: 10px;
+    transition: background-color 0.5s;
+    cursor: pointer;
+
+    &:hover {
+      color: white;
+      background-color: red;
+    }
+  }
+
+  &__info {
+    width: 90%;
+    padding-left: 1rem;
+
+    & h3 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      color: blue;
+      cursor: pointer;
+      &:hover {
+        color: rgb(88, 33, 177);
+      }
+    }
+
+    & small {
+      margin: 0.25rem;
+    }
+
+    & p {
+      text-align: justify;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+  &__star {
+    color: $color-primary;
+  }
+}

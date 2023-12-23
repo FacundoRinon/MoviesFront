@@ -38,7 +38,6 @@ const ElementCard = ({ element, series }) => {
         Authorization: `Bearer ${user.token}`,
       },
     });
-    console.log("response del endpoint", response.data);
     dispatch(toggleWatchlist(response.data.favorites));
   }
 
