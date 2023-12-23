@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faStar, faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
 import { toggleWatchlist } from "../../redux/userSlice";
@@ -63,10 +63,10 @@ const ElementCard = ({ element, series }) => {
         </Link>
         {alreadyInWatchlist ? (
           <p
-            className="elementCard__watchlistButton"
+            className="elementCard__watchlistButton--out"
             onClick={() => handleWatchList()}
           >
-            <FontAwesomeIcon className="elementCard__plus" icon={faPlus} />{" "}
+            <FontAwesomeIcon className="elementCard__minus" icon={faMinus} />{" "}
             Delete
           </p>
         ) : (

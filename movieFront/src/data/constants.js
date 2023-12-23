@@ -8,4 +8,5 @@ export const ROUTES = {
   videos: "videos/:id/:media/:position",
   episodes: "/episodes/:id",
   cast: "/cast/:id/:media",
+  watchlist: "/watchlist",
 };
