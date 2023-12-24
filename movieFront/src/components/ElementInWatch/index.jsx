@@ -15,8 +15,6 @@ const ElementInWatch = ({ element }) => {
   const user = useSelector((state) => state.user);
   const id = element.element_id;
 
-  console.log(element.media);
-
   const [media, setMedia] = useState(null);
   const [data, setData] = useState(null);
   const navigate = useNavigate();
