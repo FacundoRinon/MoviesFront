@@ -1,0 +1,85 @@
+@import "../../theme/variables.scss";
+
+.modal-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.modal {
+  background-color: rgb(48, 47, 47);
+  border-radius: 7px;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &__text {
+    color: $color-primary;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0;
+  }
+
+  &__bigStar {
+    font-size: 8rem;
+    position: relative;
+    bottom: 4rem;
+    color: rgb(99, 162, 243);
+  }
+
+  &__close {
+    font-size: 2rem;
+    color: white;
+    position: relative;
+    bottom: 10.5rem;
+    left: 16rem;
+    padding: 0.25rem;
+    cursor: pointer;
+    &:hover {
+      background-color: rgba(141, 141, 141, 0.308);
+      border-radius: 50px;
+    }
+  }
+
+  &__bigBlock {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    bottom: 4rem;
+
+    h3 {
+      color: white;
+    }
+  }
+
+  &__button {
+    background-color: $color-primary;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 5px;
+    width: 60%;
+    font-weight: bolder;
+    cursor: pointer;
+    transition: background-color 0.5s;
+    &:hover {
+      background-color: rgb(230, 198, 20);
+    }
+  }
+}
+
+.score {
+  margin-bottom: 1.5rem;
+
+  &__icon {
+    font-size: 1.75rem;
+    color: gray;
+
+    &--covered {
+      font-size: 1.75rem;
+      color: rgb(99, 162, 243);
+    }
+  }
+}
