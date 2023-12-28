@@ -48,9 +48,24 @@
     &:hover {
       background-color: rgb(42, 51, 54);
     }
+    &--out {
+      display: flex;
+      font-weight: 800;
+      justify-content: center;
+      align-items: center;
+      color: rgb(255, 62, 62);
+      background-color: rgb(70, 66, 66);
+      padding: 0.5rem;
+      border-radius: 5px;
+      z-index: 20;
+      &:hover {
+        background-color: rgb(54, 42, 42);
+      }
+    }
   }
 
-  &__plus {
+  &__plus,
+  &__minus {
     margin-right: 0.5rem;
   }
 

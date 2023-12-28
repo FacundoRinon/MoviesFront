@@ -91,8 +91,15 @@
 
   &__watchlist {
     display: flex;
+    padding: 0.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.5s;
     @media (max-width: 850px) {
       display: none;
+    }
+    &:hover {
+      background-color: $color-terciary;
     }
   }
 
@@ -177,7 +184,7 @@
       padding-bottom: 1rem;
       transition: background-color 0.5s;
       &:hover {
-        background-color: gray;
+        background-color: $color-terciary;
       }
     }
   }
