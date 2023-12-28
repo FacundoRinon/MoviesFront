@@ -4,6 +4,10 @@
   padding-bottom: 2rem;
   border-top: 1px solid $color-secondary;
   display: flex;
+  @media (max-width: 576px) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
   &__img {
     max-height: 10rem;
@@ -31,6 +35,12 @@
   &__info {
     width: 90%;
     padding-left: 1rem;
+    @media (max-width: 576px) {
+      margin-top: 1rem;
+      padding-left: 0;
+      max-height: 10rem;
+      overflow: scroll;
+    }
 
     & h3 {
       margin-top: 0;

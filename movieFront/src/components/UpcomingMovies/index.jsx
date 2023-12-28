@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -20,12 +20,28 @@ const UpcomingMovies = ({ list }) => {
   };
 
   const increaseSelected = () => {
-    if (selectedMovie !== 15) {
+    if (selectedMovie < 15) {
       setSelectedMovie(selectedMovie + 1);
     } else {
       setSelectedMovie(0);
     }
   };
+
+  const [nextUpcomings, setNextUpcomings] = useState(() => {
+    if (selectedMovie <= 16) {
+      return selectedMovie;
+    } else {
+      return 0;
+    }
+  });
+
+  useEffect(() => {
+    if (selectedMovie <= 16) {
+      setNextUpcomings(selectedMovie);
+    } else {
+      setNextUpcomings(0);
+    }
+  }, [selectedMovie]);
 
   return (
     <div className="upcomingMovies">
@@ -76,48 +92,75 @@ const UpcomingMovies = ({ list }) => {
       <div className="upcomingMovies__nextMovies">
         <p>Up next</p>
         <div
-          onClick={() => setSelectedMovie(selectedMovie + 1)}
+          onClick={() => setSelectedMovie(nextUpcomings + 1)}
           className="upcomingMovies__nextMovie"
         >
-          <img
-            src={`https://image.tmdb.org/t/p/original${
-              list[selectedMovie + 1].poster_path
-            }`}
-            alt=""
-          />
+          {list[nextUpcomings + 1].poster_path ? (
+            <img
+              src={`https://image.tmdb.org/t/p/original${
+                list[nextUpcomings + 1].poster_path
+              }`}
+              alt=""
+            />
+          ) : (
+            <img
+              src={`https://image.tmdb.org/t/p/original${
+                list[nextUpcomings + 1].backdrop_path
+              }`}
+              alt=""
+            />
+          )}
           <div className="upcomingMovies__nextInfo">
-            <h4>{list[selectedMovie + 1].title}</h4>
-            <small>{list[selectedMovie + 1].release_date}</small>
+            <h4>{list[nextUpcomings + 1].title}</h4>
+            <small>{list[nextUpcomings + 1].release_date}</small>
           </div>
         </div>
         <div
-          onClick={() => setSelectedMovie(selectedMovie + 2)}
+          onClick={() => setSelectedMovie(nextUpcomings + 2)}
           className="upcomingMovies__nextMovie"
         >
-          <img
-            src={`https://image.tmdb.org/t/p/original${
-              list[selectedMovie + 2].poster_path
-            }`}
-            alt=""
-          />
+          {list[nextUpcomings + 2].poster_path ? (
+            <img
+              src={`https://image.tmdb.org/t/p/original${
+                list[nextUpcomings + 2].poster_path
+              }`}
+              alt=""
+            />
+          ) : (
+            <img
+              src={`https://image.tmdb.org/t/p/original${
+                list[nextUpcomings + 2].poster_path
+              }`}
+              alt=""
+            />
+          )}
           <div className="upcomingMovies__nextInfo">
-            <h4>{list[selectedMovie + 2].title}</h4>
-            <small>{list[selectedMovie + 2].release_date}</small>
+            <h4>{list[nextUpcomings + 2].title}</h4>
+            <small>{list[nextUpcomings + 2].release_date}</small>
           </div>
         </div>
         <div
-          onClick={() => setSelectedMovie(selectedMovie + 3)}
+          onClick={() => setSelectedMovie(nextUpcomings + 3)}
           className="upcomingMovies__nextMovie"
         >
-          <img
-            src={`https://image.tmdb.org/t/p/original${
-              list[selectedMovie + 3].poster_path
-            }`}
-            alt=""
-          />
+          {list[nextUpcomings + 3].poster_path ? (
+            <img
+              src={`https://image.tmdb.org/t/p/original${
+                list[nextUpcomings + 3].poster_path
+              }`}
+              alt=""
+            />
+          ) : (
+            <img
+              src={`https://image.tmdb.org/t/p/original${
+                list[nextUpcomings + 3].backdrop_path
+              }`}
+              alt=""
+            />
+          )}
           <div className="upcomingMovies__nextInfo">
-            <h4>{list[selectedMovie + 3].title}</h4>
-            <small>{list[selectedMovie + 3].release_date}</small>
+            <h4>{list[nextUpcomings + 3].title}</h4>
+            <small>{list[nextUpcomings + 3].release_date}</small>
           </div>
         </div>
       </div>
