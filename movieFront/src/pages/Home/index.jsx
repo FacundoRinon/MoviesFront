@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
 
 import { getUpcomingMovies } from "../../api/movies";
 import { getPopularMovies } from "../../api/movies";
@@ -7,6 +9,7 @@ import { getTrendingMovies } from "../../api/movies";
 
 import { topRatedSeries } from "../../api/series";
 import { getTrending } from "../../api/series";
+import { updateUser } from "../../redux/userSlice";
 
 import UpcomingMovies from "../../components/UpcomingMovies";
 import ElementsList from "../../components/ElementsList";
@@ -17,6 +20,8 @@ import ReducerLoader from "../../components/ReducerLoader";
 import "./index.scss";
 
 const Home = () => {
+  const user = useSelector((state) => state.user);
+
   const [upcomingMovies, setUpcomingMovies] = useState([]);
   const [popularMovies, setPopularMovies] = useState([]);
   const [topRated, setTopRated] = useState([]);
@@ -24,6 +29,8 @@ const Home = () => {
   const [topSeries, setTopSeries] = useState([]);
   const [trendingSeries, setTrendingSeries] = useState([]);
   const [apiPage, setApiPage] = useState(1);
+
+  const dispatch = useDispatch();
 
   // const initHome = async () => {
   //   const response = await getMovies(apiPage);
@@ -68,6 +75,22 @@ const Home = () => {
     treSeries();
     treMovies();
   }, [apiPage]);
+
+  useEffect(() => {
+    async function getScored() {
+      const response = await axios({
+        method: "GET",
+        url: `${import.meta.env.VITE_API_URL}/movie/`,
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      dispatch(updateUser(response.data.newScored));
+    }
+    getScored();
+  }, []);
+
+  window.scrollTo(0, 0);
 
   return (
     <>

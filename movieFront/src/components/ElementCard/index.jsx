@@ -17,11 +17,24 @@ const ElementCard = ({ element, series }) => {
   const [alreadyInWatchlist, setAlreadyInWatchlist] = useState(false);
   const [modal, setModal] = useState(false);
 
+  const [userScore, setUserScore] = useState(false);
+
   useEffect(() => {
     setAlreadyInWatchlist(
       user.favoriteMovies.some((movie) => movie.element_id === element.id)
     );
   }, [user.favoriteMovies, element.id]);
+
+  useEffect(() => {
+    const foundScore = user.scored.find(
+      (score) =>
+        score.element_id === element.id &&
+        (score.media === element.media_type || (score.media === "tv" && series))
+    );
+    if (foundScore) {
+      setUserScore(foundScore.score);
+    }
+  }, [user]);
 
   const toggleModal = () => {
     if (modal) {
@@ -62,15 +75,20 @@ const ElementCard = ({ element, series }) => {
           />
         </Link>
         <div className="elementCard__info">
-          <p>
+          <p onClick={() => setModal(true)}>
             <FontAwesomeIcon className="elementCard__star" icon={faStar} />{" "}
             {element.vote_average.toFixed(1)}
-            <FontAwesomeIcon
-              className="elementCard__rate"
-              onClick={() => setModal(true)}
-              icon={regularStar}
-            />
+            {!userScore ? (
+              <FontAwesomeIcon
+                className="elementCard__rate"
+                icon={regularStar}
+              />
+            ) : (
+              <FontAwesomeIcon className="elementCard__rate" icon={faStar} />
+            )}{" "}
+            {userScore}
           </p>
+
           <Link to={linkTo} className="link">
             {element.name && (
               <p className="elementCard__name">{element.name}</p>
@@ -100,7 +118,13 @@ const ElementCard = ({ element, series }) => {
       </div>
       {modal && (
         <div className="modalContainer">
-          <ScoreModal element={element} toggleModal={toggleModal} />
+          <ScoreModal
+            element={element}
+            toggleModal={toggleModal}
+            series={series}
+            setUserScore={setUserScore}
+            setModal={setModal}
+          />
         </div>
       )}
     </>

@@ -6,16 +6,43 @@ import {
   faTimes,
   faStar as solidStar,
 } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 
 import "./index.scss";
+import { useSelector } from "react-redux";
 
-const ScoreModal = ({ element, toggleModal }) => {
+const ScoreModal = ({
+  element,
+  toggleModal,
+  series,
+  setUserScore,
+  setModal,
+}) => {
+  const user = useSelector((state) => state.user);
   const [isHovered, setIsHovered] = useState(0);
   const [score, setScore] = useState(0);
 
   const handleMouseEnter = (starNumber) => () => {
     setIsHovered(starNumber);
   };
+
+  async function handleScore() {
+    const response = await axios({
+      method: "PATCH",
+      url: `${import.meta.env.VITE_API_URL}/movie/`,
+      data: {
+        user_id: user.id,
+        element_id: element.id,
+        media: series || element.media_type === "tv" ? "tv" : "movie",
+        score: score,
+      },
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
+    setUserScore(response.data.newScore.score);
+    setModal(false);
+  }
 
   return (
     <>
@@ -116,7 +143,7 @@ const ScoreModal = ({ element, toggleModal }) => {
               icon={isHovered === 10 ? solidStar : regularStar}
             />
           </div>
-          <button onClick={() => rateRecipe()} className="modal__button">
+          <button onClick={() => handleScore()} className="modal__button">
             Rate
           </button>
         </div>
