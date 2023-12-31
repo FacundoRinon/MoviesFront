@@ -63,6 +63,10 @@ const VideosPage = () => {
     }
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="videosPage">
       {videos && videos.length > 0 ? (

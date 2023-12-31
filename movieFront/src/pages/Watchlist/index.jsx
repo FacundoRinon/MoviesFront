@@ -8,6 +8,10 @@ import "./index.scss";
 const Watchlist = () => {
   const user = useSelector((state) => state.user);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="watchlist">
       <div className="watchlist__container">
