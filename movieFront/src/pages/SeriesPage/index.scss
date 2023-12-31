@@ -41,6 +41,14 @@
       font-size: 1.5rem;
       color: $color-primary;
     }
+    &--yellow {
+      font-size: 1.5rem;
+      color: $color-primary;
+    }
+    &--blue {
+      font-size: 1.5rem;
+      color: $color-scored;
+    }
   }
 
   &__presentationScore {

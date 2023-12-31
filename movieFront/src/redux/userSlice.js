@@ -10,6 +10,13 @@ const userSlice = createSlice({
     removeToken(state, action) {
       return null;
     },
+    updateUser(state, action) {
+      const newUser = {
+        ...state,
+        scored: action.payload,
+      };
+      return newUser;
+    },
     toggleWatchlist(state, action) {
       try {
         if (state && state.favoriteMovies) {
@@ -38,5 +45,5 @@ const userSlice = createSlice({
 });
 
 const { actions, reducer } = userSlice;
-export const { setToken, removeToken, toggleWatchlist } = actions;
+export const { setToken, removeToken, updateUser, toggleWatchlist } = actions;
 export default reducer;

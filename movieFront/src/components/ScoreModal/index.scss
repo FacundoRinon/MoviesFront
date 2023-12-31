@@ -1,24 +1,31 @@
 @import "../../theme/variables.scss";
 
-.modal-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
 .modal {
+  width: 45%;
+  margin-top: 5rem;
   background-color: rgb(48, 47, 47);
   border-radius: 7px;
-  width: 50%;
   display: flex;
   align-items: center;
   flex-direction: column;
+  @media (max-width: 950px) {
+    width: 70%;
+  }
+  @media (max-width: 550px) {
+    width: 80%;
+  }
 
   &__text {
     color: $color-primary;
     font-size: 1.15rem;
     font-weight: 700;
     margin-bottom: 0;
+  }
+
+  &__bigStarContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 
   &__bigStar {
@@ -28,12 +35,23 @@
     color: rgb(99, 162, 243);
   }
 
+  &__scorePts {
+    position: fixed;
+    font-size: 2rem;
+    margin: -12px;
+  }
+
+  &__closeContainer {
+    display: flex;
+    justify-content: end;
+    position: relative;
+    width: 100%;
+  }
   &__close {
     font-size: 2rem;
     color: white;
     position: relative;
     bottom: 10.5rem;
-    left: 16rem;
     padding: 0.25rem;
     cursor: pointer;
     &:hover {
@@ -52,6 +70,9 @@
 
     h3 {
       color: white;
+      @media (max-width: 550px) {
+        font-size: 0.75rem;
+      }
     }
   }
 
@@ -76,6 +97,9 @@
   &__icon {
     font-size: 1.75rem;
     color: gray;
+    @media (max-width: 550px) {
+      font-size: 1.25rem;
+    }
 
     &--covered {
       font-size: 1.75rem;
