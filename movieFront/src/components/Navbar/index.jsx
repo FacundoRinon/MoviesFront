@@ -128,7 +128,7 @@ const Navbar = () => {
       </div>
       {menu && (
         <div className="navbar__userMenu">
-          <p>Profile</p>
+          <p onClick={() => navigate("/profile")}>Profile</p>
           <p onClick={() => navigate("/watchlist")}>Watchlist</p>
           <p onClick={() => handleLogout()}>Sign Out</p>
         </div>

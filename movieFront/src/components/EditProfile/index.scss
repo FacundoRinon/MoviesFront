@@ -1,0 +1,59 @@
+@import "../../theme/variables.scss";
+.editProfile {
+  position: fixed;
+  height: 93vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__container {
+    background-color: $color-secondary;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid white;
+    h2 {
+      color: white;
+    }
+    input {
+      width: 90%;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      border: 2px solid $color-secondary;
+      border-radius: 10px;
+      padding: 0.5rem;
+    }
+  }
+
+  &__closeRow {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+  }
+
+  &__icon {
+    color: white;
+    font-size: 2rem;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__label {
+    font-size: 1.5rem;
+    color: white;
+    margin-top: 1rem;
+  }
+
+  &__button {
+    background-color: $color-primary;
+    color: white;
+    padding: 0.5rem;
+    border: 5px solid $color-primary;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+}

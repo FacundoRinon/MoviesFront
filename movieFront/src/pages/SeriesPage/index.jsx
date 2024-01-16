@@ -85,6 +85,10 @@ const SeriesPage = () => {
 
   const filteredPhotos = photos.slice(0, 30);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <div className="seriesPage">

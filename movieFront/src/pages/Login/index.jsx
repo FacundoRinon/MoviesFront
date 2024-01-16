@@ -30,6 +30,8 @@ const Login = () => {
     }
   }
 
+  window.scrollTo(0, 0);
+
   return (
     <div className="login">
       <div className="login__content">

@@ -43,7 +43,9 @@ const CastPage = () => {
     getData();
   }, []);
 
-  window.scrollTo(0, 0);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="castPage">

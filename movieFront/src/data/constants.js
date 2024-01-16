@@ -9,4 +9,6 @@ export const ROUTES = {
   episodes: "/episodes/:id",
   cast: "/cast/:id/:media",
   watchlist: "/watchlist",
+  profile: "/profile",
+  aboutProject: "/aboutProject",
 };

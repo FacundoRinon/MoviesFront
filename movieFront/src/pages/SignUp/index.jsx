@@ -33,6 +33,8 @@ const SignUp = () => {
     }
   }
 
+  window.scrollTo(0, 0);
+
   return (
     <div className="signUp">
       <div className="signUp__content">

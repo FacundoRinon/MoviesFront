@@ -1,4 +1,29 @@
 @import "../../theme/variables.scss";
+.backRow {
+  width: 100%;
+  position: fixed;
+
+  &__element {
+    padding: 2rem;
+    margin-left: 1rem;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.5s;
+    &:hover {
+      color: $color-primary;
+      transform: scale(1.5);
+    }
+    @media (max-width: 800px) {
+      margin: 1rem;
+      padding: 0;
+    }
+    @media (max-width: 576px) {
+      margin: 0.5rem;
+      font-size: 1rem;
+    }
+  }
+}
 .watchlist {
   background-color: rgb(184, 182, 182);
   width: 100%;

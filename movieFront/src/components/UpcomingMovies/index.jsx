@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronLeft,
@@ -10,6 +10,8 @@ import "./index.scss";
 
 const UpcomingMovies = ({ list }) => {
   const [selectedMovie, setSelectedMovie] = useState(0);
+
+  const navigate = useNavigate();
 
   const decreaseSelected = () => {
     if (selectedMovie !== 0) {
@@ -43,6 +45,10 @@ const UpcomingMovies = ({ list }) => {
     }
   }, [selectedMovie]);
 
+  const goToMovie = () => {
+    navigate(`/movies/${list[selectedMovie].id}`);
+  };
+
   return (
     <div className="upcomingMovies">
       <div className="upcomingMovies__selectedMovie">
@@ -74,17 +80,19 @@ const UpcomingMovies = ({ list }) => {
           {`${list[selectedMovie].poster_path}` !== "null" ||
           !`${list[selectedMovie].poster_path}` ? (
             <img
+              onClick={() => goToMovie()}
               src={`https://image.tmdb.org/t/p/original${list[selectedMovie].poster_path}`}
               alt=""
             />
           ) : (
             <img
+              onClick={() => goToMovie()}
               src={`https://image.tmdb.org/t/p/original${list[selectedMovie].backdrop_path}`}
               alt=""
             />
           )}
           <div className="upcomingMovies__info">
-            <h2>{list[selectedMovie].title}</h2>
+            <h2 onClick={() => goToMovie()}>{list[selectedMovie].title}</h2>
             <p>Realese date: {list[selectedMovie].release_date}</p>
           </div>
         </div>

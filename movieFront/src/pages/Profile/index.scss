@@ -1,0 +1,75 @@
+@import "../../theme/variables.scss";
+.profile {
+  width: 100%;
+  background-color: black;
+  min-height: 93vh;
+
+  &__backRow {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    &--element {
+      margin: 1rem;
+      color: white;
+      font-size: 2rem;
+      transition: transform 0.5s;
+      cursor: pointer;
+      &:hover {
+        color: $color-primary;
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  &__header {
+    @media (min-width: 450px) {
+      display: flex;
+    }
+    padding: 1rem;
+    img {
+      height: 10rem;
+      width: 10rem;
+      border-radius: 50%;
+      border: 3px solid $color-primary;
+      object-fit: cover;
+    }
+  }
+
+  &__headerData {
+    @media (max-width: 450px) {
+      width: 100%;
+      padding-left: 0;
+      padding-top: 2rem;
+    }
+    color: white;
+    padding-left: 2rem;
+
+    h1 {
+      margin-top: 0;
+    }
+  }
+
+  &__watchlist,
+  &__scored {
+    color: white;
+
+    h3 {
+      padding-left: 1rem;
+      font-size: 2rem;
+    }
+  }
+
+  &__edi {
+    background-color: $color-primary;
+    color: white;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    transition: transform 0.5s;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.02);
+      background-color: rgb(201, 167, 15);
+    }
+  }
+}
