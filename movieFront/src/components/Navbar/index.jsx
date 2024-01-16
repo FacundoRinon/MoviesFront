@@ -84,13 +84,23 @@ const Navbar = () => {
             />
           </div>
           <div className="navbar__rightItems">
-            <p
-              className="navbar__watchlist"
-              onClick={() => navigate("/watchlist")}
-            >
-              <FontAwesomeIcon className="navbar__icon" icon={faPlus} />
-              Watchlist
-            </p>
+            {user ? (
+              <p
+                className="navbar__watchlist"
+                onClick={() => navigate("/watchlist")}
+              >
+                <FontAwesomeIcon className="navbar__icon" icon={faPlus} />
+                Watchlist
+              </p>
+            ) : (
+              <p
+                className="navbar__watchlist"
+                onClick={() => navigate("/logIn")}
+              >
+                <FontAwesomeIcon className="navbar__icon" icon={faPlus} />
+                Watchlist
+              </p>
+            )}
             <FontAwesomeIcon
               className="navbar__search"
               icon={faSearch}
@@ -128,6 +138,7 @@ const Navbar = () => {
       </div>
       {menu && (
         <div className="navbar__userMenu">
+          <p onClick={() => navigate("/aboutProject")}>About project</p>
           <p onClick={() => navigate("/profile")}>Profile</p>
           <p onClick={() => navigate("/watchlist")}>Watchlist</p>
           <p onClick={() => handleLogout()}>Sign Out</p>
