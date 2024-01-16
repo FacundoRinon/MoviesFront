@@ -13,6 +13,7 @@ import EpisodesPage from "./pages/EpisodesPage";
 import CastPage from "./pages/CastPage";
 import Watchlist from "./pages/Watchlist";
 import Profile from "./pages/Profile";
+import AboutProject from "./pages/AboutProject";
 
 import "./App.css";
 
@@ -21,6 +22,7 @@ function App() {
     <Routes>
       <Route path={ROUTES.signUp} element={<SignUp />} />
       <Route path={ROUTES.login} element={<Login />} />
+      <Route path={ROUTES.aboutProject} element={<AboutProject />} />
       <Route path={ROUTES.home} element={<Layout />}>
         <Route index element={<Home />} />
         <Route path={ROUTES.serie} element={<SeriesPage />} />

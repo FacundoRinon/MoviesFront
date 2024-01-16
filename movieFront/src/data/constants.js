@@ -10,4 +10,5 @@ export const ROUTES = {
   cast: "/cast/:id/:media",
   watchlist: "/watchlist",
   profile: "/profile",
+  aboutProject: "/aboutProject",
 };

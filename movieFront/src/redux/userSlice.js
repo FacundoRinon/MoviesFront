@@ -41,9 +41,18 @@ const userSlice = createSlice({
       }
       return state;
     },
+    editUser(state, action) {
+      const newUser = {
+        ...state,
+        name: action.payload.name,
+        avatar: action.payload.avatar,
+      };
+      return newUser;
+    },
   },
 });
 
 const { actions, reducer } = userSlice;
-export const { setToken, removeToken, updateUser, toggleWatchlist } = actions;
+export const { setToken, removeToken, updateUser, toggleWatchlist, editUser } =
+  actions;
 export default reducer;
