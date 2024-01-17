@@ -1,0 +1,114 @@
+@import "../../theme/variables.scss";
+.aboutProject {
+  top: 5rem;
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  color: white;
+  &__container {
+    width: 90%;
+  }
+
+  &__tech,
+  &__me {
+    margin-top: 4rem;
+  }
+
+  &__techLogos {
+    margin-top: 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+  }
+
+  &__logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  &__logoPic {
+    height: 7rem;
+    width: 7rem;
+    @media (max-width: 1000px) {
+      //   width: ;
+    }
+  }
+
+  &__schedle {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  &__paragraph {
+    text-align: justify;
+    line-height: 1.5;
+  }
+
+  &__myInfo {
+    margin-top: 4rem;
+    align-items: end;
+    @media (min-width: 400px) {
+      display: flex;
+    }
+  }
+
+  &__picSpace {
+    display: flex;
+    justify-content: center;
+    @media (max-width: 400px) {
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__pic {
+    width: 15rem;
+    height: 15rem;
+    object-fit: cover;
+    border-radius: 50%;
+    @media (max-width: 400px) {
+      width: 10rem;
+      height: 10rem;
+    }
+  }
+
+  &__contact {
+    @media (min-width: 400px) {
+      padding-left: 2rem;
+    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5rem;
+  }
+}
+
+.contact {
+  &__linkedIn {
+    cursor: pointer;
+    transition: transform 0.5s;
+    &:hover {
+      color: $color-primary;
+      transform: scale(1.05);
+    }
+  }
+  &__github {
+    cursor: pointer;
+    transition: transform 0.5s;
+    &:hover {
+      color: $color-primary;
+      transform: scale(1.05);
+    }
+  }
+  &__portfolio {
+    cursor: pointer;
+    transition: transform 0.5s;
+    &:hover {
+      color: $color-primary;
+      transform: scale(1.05);
+    }
+  }
+}
