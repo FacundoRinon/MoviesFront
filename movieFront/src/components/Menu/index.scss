@@ -1,0 +1,61 @@
+@import "../../theme/variables.scss";
+.menu {
+  height: 100vh;
+  background-color: $color-secondary;
+  position: fixed;
+  width: 100vw;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+
+  &__container {
+    background-color: $color-secondary;
+    color: white;
+    width: 75%;
+    padding: 2rem;
+  }
+
+  &__logoRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+  }
+
+  &__logo {
+    cursor: pointer;
+  }
+
+  &__icon {
+    font-size: 2rem;
+    width: 2rem;
+    height: 2rem;
+    color: black;
+    background-color: $color-primary;
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  &__link {
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__movieRow,
+  &__seriesRow,
+  &__aboutProject {
+    h2 {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__icon2 {
+    margin-right: 1rem;
+    color: $color-primary;
+  }
+}

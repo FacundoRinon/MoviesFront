@@ -11,6 +11,7 @@ import {
 import { useNavigate } from "react-router-dom";
 
 import SearchList from "../SearchList/indec";
+import Menu from "../Menu";
 import { removeToken } from "../../redux/userSlice";
 
 import "./index.scss";
@@ -24,6 +25,7 @@ const Navbar = () => {
   const [searchValue, setSearchValue] = useState("");
   const [movilSearch, setMovilSearch] = useState(false);
   const [menu, setMenu] = useState(false);
+  const [options, setOptions] = useState(false);
 
   useEffect(() => {
     if (searchValue.length > 0) {
@@ -61,6 +63,14 @@ const Navbar = () => {
     }
   }
 
+  function toggleOptions() {
+    if (options) {
+      setOptions(false);
+    } else {
+      setOptions(true);
+    }
+  }
+
   return (
     <>
       <div className="navbar">
@@ -72,7 +82,7 @@ const Navbar = () => {
               src="../public/logo.png"
               alt=""
             />
-            <p className="navbar__menu">
+            <p className="navbar__menu" onClick={() => toggleMenu()}>
               <FontAwesomeIcon className="navbar__icon" icon={faBars} /> Menu
             </p>
             <input
@@ -107,7 +117,7 @@ const Navbar = () => {
               onClick={() => setMovilSearch(true)}
             />
             {user ? (
-              <p className="navbar__user" onClick={() => toggleMenu(true)}>
+              <p className="navbar__user" onClick={() => toggleOptions(true)}>
                 <img
                   src={`${import.meta.env.VITE_IMG_URL}/${user.avatar}`}
                   alt=""
@@ -136,7 +146,7 @@ const Navbar = () => {
           </div>
         )}
       </div>
-      {menu && (
+      {options && (
         <div className="navbar__userMenu">
           <p onClick={() => navigate("/aboutProject")}>About project</p>
           <p onClick={() => navigate("/profile")}>Profile</p>
@@ -145,6 +155,7 @@ const Navbar = () => {
         </div>
       )}
       <SearchList results={searchResults} setSearchValue={setSearchValue} />
+      {menu && <Menu setMenu={setMenu} />}
     </>
   );
 };
