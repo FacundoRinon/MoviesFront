@@ -77,17 +77,19 @@ const Home = () => {
   }, [apiPage]);
 
   useEffect(() => {
-    async function getScored() {
-      const response = await axios({
-        method: "GET",
-        url: `${import.meta.env.VITE_API_URL}/movie/`,
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
-      dispatch(updateUser(response.data.newScored));
+    if (user) {
+      async function getScored() {
+        const response = await axios({
+          method: "GET",
+          url: `${import.meta.env.VITE_API_URL}/movie/`,
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        });
+        dispatch(updateUser(response.data.newScored));
+      }
+      getScored();
     }
-    getScored();
   }, []);
 
   useEffect(() => {

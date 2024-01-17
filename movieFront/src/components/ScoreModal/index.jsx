@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
 import {
   faTimes,
@@ -21,6 +22,8 @@ const ScoreModal = ({
   const user = useSelector((state) => state.user);
   const [isHovered, setIsHovered] = useState(0);
   const [score, setScore] = useState(0);
+
+  const navigate = useNavigate();
 
   const handleMouseEnter = (starNumber) => () => {
     setIsHovered(starNumber);
@@ -143,9 +146,18 @@ const ScoreModal = ({
               icon={isHovered === 10 ? solidStar : regularStar}
             />
           </div>
-          <button onClick={() => handleScore()} className="modal__button">
-            Rate
-          </button>
+          {user ? (
+            <button onClick={() => handleScore()} className="modal__button">
+              Rate
+            </button>
+          ) : (
+            <button
+              onClick={() => navigate("/logIn")}
+              className="modal__button"
+            >
+              Log in
+            </button>
+          )}
         </div>
       </div>
     </>
