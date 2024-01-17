@@ -45,9 +45,28 @@
     }
   }
 
+  &__link2 {
+    color: white;
+    text-decoration: none;
+    margin-top: 1.5rem;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   &__movieRow,
-  &__seriesRow,
+  &__seriesRow {
+    h2 {
+      display: flex;
+      align-items: center;
+    }
+  }
+
   &__aboutProject {
+    display: flex;
+    flex-wrap: wrap;
+
     h2 {
       display: flex;
       align-items: center;

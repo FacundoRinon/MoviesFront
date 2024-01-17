@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTimes,
@@ -6,7 +7,6 @@ import {
   faTv,
   faProjectDiagram,
 } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
 
 import "./index.scss";
 
@@ -20,6 +20,11 @@ const Menu = ({ setMenu }) => {
 
   const closeMenu = () => {
     setMenu(false);
+  };
+
+  const link = (url) => {
+    setMenu(false);
+    navigate(url);
   };
 
   return (
@@ -55,10 +60,36 @@ const Menu = ({ setMenu }) => {
             <FontAwesomeIcon className="menu__icon2" icon={faProjectDiagram} />{" "}
             About Project
           </h2>
-          <p className="menu__link">Know more...</p>
-          <p className="menu__link">Developer LinkedIn</p>
-          <p className="menu__link">Developer Portfolio</p>
-          <p className="menu__link">Developer Git hub</p>
+          <p className="menu__link" onClick={() => link("/aboutProject")}>
+            Know more...
+          </p>
+          <div className="menu__link2">
+            <Link
+              className="menu__link2"
+              to={"https://www.linkedin.com/in/facundo-rinon/"}
+              target="_blank"
+            >
+              Developer LinkedIn
+            </Link>
+          </div>
+          <div className="menu__link2">
+            <Link
+              className="menu__link2"
+              to={"https://web-portfolio-facundorinon.vercel.app/"}
+              target="_blank"
+            >
+              Developer Portfolio
+            </Link>
+          </div>
+          <div className="menu__link2">
+            <Link
+              className="menu__link2"
+              to={"https://github.com/FacundoRinon"}
+              target="_blank"
+            >
+              Developer Git hub
+            </Link>
+          </div>
         </div>
       </div>
     </div>
