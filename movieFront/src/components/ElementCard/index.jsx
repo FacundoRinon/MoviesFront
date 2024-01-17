@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
 import { faStar, faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
@@ -18,6 +18,7 @@ const ElementCard = ({ element, series }) => {
   const [modal, setModal] = useState(false);
 
   const [userScore, setUserScore] = useState(false);
+  const navigate = useNavigate();
 
   if (user) {
     useEffect(() => {
@@ -27,12 +28,14 @@ const ElementCard = ({ element, series }) => {
     }, [user.favoriteMovies, element.id]);
 
     useEffect(() => {
-      const foundScore = user.scored.find(
-        (score) =>
-          score.element_id === element.id &&
-          (score.media === element.media_type ||
-            (score.media === "tv" && series))
-      );
+      const foundScore =
+        user.scored &&
+        user.scored.find(
+          (score) =>
+            score.element_id === element.id &&
+            (score.media === element.media_type ||
+              (score.media === "tv" && series))
+        );
       if (foundScore) {
         setUserScore(foundScore.score);
       }
@@ -53,19 +56,23 @@ const ElementCard = ({ element, series }) => {
       : `/movies/${element.id}`;
 
   async function handleWatchList() {
-    const response = await axios({
-      method: "PATCH",
-      url: `${import.meta.env.VITE_API_URL}/users/`,
-      data: {
-        user_id: user.id,
-        element_id: element.id,
-        media: series || element.media_type === "tv" ? "tv" : "movie",
-      },
-      headers: {
-        Authorization: `Bearer ${user.token}`,
-      },
-    });
-    dispatch(toggleWatchlist(response.data.favorites));
+    if (user) {
+      const response = await axios({
+        method: "PATCH",
+        url: `${import.meta.env.VITE_API_URL}/users/`,
+        data: {
+          user_id: user.id,
+          element_id: element.id,
+          media: series || element.media_type === "tv" ? "tv" : "movie",
+        },
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      dispatch(toggleWatchlist(response.data.favorites));
+    } else {
+      navigate("/login");
+    }
   }
 
   return (
