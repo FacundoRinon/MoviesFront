@@ -47,13 +47,17 @@ const Menu = ({ setMenu }) => {
           <h2>
             <FontAwesomeIcon className="menu__icon2" icon={faFilm} /> Movies
           </h2>
-          <p className="menu__link">All movies</p>
+          <p className="menu__link" onClick={() => link("/allMovies")}>
+            All movies
+          </p>
         </div>
         <div className="menu__seriesRow">
           <h2>
             <FontAwesomeIcon className="menu__icon2" icon={faTv} /> TV Shows
           </h2>
-          <p className="menu__link">All series</p>
+          <p className="menu__link" onClick={() => link("/allSeries")}>
+            All series
+          </p>
         </div>
         <div className="menu__aboutProyect">
           <h2>

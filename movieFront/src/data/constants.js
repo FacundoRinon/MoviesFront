@@ -11,4 +11,6 @@ export const ROUTES = {
   watchlist: "/watchlist",
   profile: "/profile",
   aboutProject: "/aboutProject",
+  allMovies: "/allMovies",
+  allSeries: "/allSeries",
 };
