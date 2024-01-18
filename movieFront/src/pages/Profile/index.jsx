@@ -100,9 +100,10 @@ const Profile = () => {
           <div className="profile__headerData">
             <h1>{user.name}</h1>
             <p>{user.email}</p>
-            <div className="profile__edi">
-              <p onClick={() => setModal(true)}>Edit profile</p>
-            </div>
+
+            <button className="profile__edi" onClick={() => setModal(true)}>
+              Edit profile
+            </button>
           </div>
         </div>
         <div className="profile__watchlist">

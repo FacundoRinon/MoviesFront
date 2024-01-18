@@ -14,6 +14,8 @@ import CastPage from "./pages/CastPage";
 import Watchlist from "./pages/Watchlist";
 import Profile from "./pages/Profile";
 import AboutProject from "./pages/AboutProject";
+import AllMovies from "./pages/AllMovies";
+import AllSeries from "./pages/AllSeries";
 
 import "./App.css";
 
@@ -33,6 +35,8 @@ function App() {
         <Route path={ROUTES.cast} element={<CastPage />} />
         <Route path={ROUTES.watchlist} element={<Watchlist />} />
         <Route path={ROUTES.profile} element={<Profile />} />
+        <Route path={ROUTES.allMovies} element={<AllMovies />} />
+        <Route path={ROUTES.allSeries} element={<AllSeries />} />
       </Route>
     </Routes>
   );

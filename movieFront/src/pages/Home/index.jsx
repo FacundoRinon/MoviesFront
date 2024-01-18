@@ -28,14 +28,8 @@ const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [topSeries, setTopSeries] = useState([]);
   const [trendingSeries, setTrendingSeries] = useState([]);
-  const [apiPage, setApiPage] = useState(1);
 
   const dispatch = useDispatch();
-
-  // const initHome = async () => {
-  //   const response = await getMovies(apiPage);
-  //   setMovies((prevMovies) => [...prevMovies, ...response.data.results]);
-  // };
 
   const upcoming = async () => {
     const response = await getUpcomingMovies();
@@ -74,7 +68,7 @@ const Home = () => {
     seriesTop();
     treSeries();
     treMovies();
-  }, [apiPage]);
+  }, []);
 
   useEffect(() => {
     if (user) {
