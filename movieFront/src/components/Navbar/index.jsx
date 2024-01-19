@@ -71,6 +71,11 @@ const Navbar = () => {
     }
   }
 
+  function selectOption(url) {
+    navigate(url);
+    setOptions(false);
+  }
+
   return (
     <>
       <div className="navbar">
@@ -155,9 +160,9 @@ const Navbar = () => {
       </div>
       {options && (
         <div className="navbar__userMenu">
-          <p onClick={() => navigate("/aboutProject")}>About project</p>
-          <p onClick={() => navigate("/profile")}>Profile</p>
-          <p onClick={() => navigate("/watchlist")}>Watchlist</p>
+          <p onClick={() => selectOption("/aboutProject")}>About project</p>
+          <p onClick={() => selectOption("/profile")}>Profile</p>
+          <p onClick={() => selectOption("/watchlist")}>Watchlist</p>
           <p onClick={() => handleLogout()}>Sign Out</p>
         </div>
       )}
