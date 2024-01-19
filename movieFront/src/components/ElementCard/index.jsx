@@ -27,12 +27,14 @@ const ElementCard = ({ element, series }) => {
     }, [user.favoriteMovies, element.id]);
 
     useEffect(() => {
-      const foundScore = user.scored.find(
-        (score) =>
-          score.element_id === element.id &&
-          (score.media === element.media_type ||
-            (score.media === "tv" && series))
-      );
+      const foundScore =
+        user.scored &&
+        user.scored.find(
+          (score) =>
+            score.element_id === element.id &&
+            (score.media === element.media_type ||
+              (score.media === "tv" && series))
+        );
       if (foundScore) {
         setUserScore(foundScore.score);
       }
@@ -55,7 +57,7 @@ const ElementCard = ({ element, series }) => {
   async function handleWatchList() {
     const response = await axios({
       method: "PATCH",
-      url: `${import.meta.env.VITE_API_URL}/users/`,
+      url: `${import.meta.env.VITE_API_URL}users/`,
       data: {
         user_id: user.id,
         element_id: element.id,

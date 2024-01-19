@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setToken } from "../../redux/userSlice";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 
 import "./index.scss";
 
@@ -19,7 +20,7 @@ const SignUp = () => {
     event.preventDefault();
     const response = await axios({
       method: "POST",
-      url: `${import.meta.env.VITE_API_URL}/users/`,
+      url: `${import.meta.env.VITE_API_URL}users/`,
       data: {
         name: nameValue,
         email: emailValue,
@@ -30,6 +31,13 @@ const SignUp = () => {
     if (response.data.token) {
       dispatch(setToken(response.data));
       navigate("/");
+    } else {
+      toast.error(`${response.data}`, {
+        position: "top-center",
+        autoClose: 3000,
+        closeOnClick: true,
+        theme: "dark",
+      });
     }
   }
 
@@ -41,6 +49,7 @@ const SignUp = () => {
         <div className="signUp__img">
           <img src="../public/logo.png" alt="" />
         </div>
+        {/* <ToastContainer /> */}
         <div className="signUp__container">
           <h1>Create account</h1>
           <form id="form" method="post" action="" onSubmit={handleSubmit}>

@@ -42,7 +42,7 @@ const ElementInWatch = ({ element }) => {
   async function handleWatchList() {
     const response = await axios({
       method: "PATCH",
-      url: `${import.meta.env.VITE_API_URL}/users/`,
+      url: `${import.meta.env.VITE_API_URL}users/`,
       data: {
         user_id: user.id,
         element_id: id,
