@@ -33,7 +33,7 @@ const Menu = ({ setMenu }) => {
         <div className="menu__logoRow">
           <img
             onClick={() => goToHome()}
-            src="../public/logo.png"
+            src={`${import.meta.env.VITE_IMG_URL}/logo.png`}
             alt=""
             className="menu__logo"
           />

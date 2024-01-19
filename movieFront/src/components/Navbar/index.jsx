@@ -79,7 +79,7 @@ const Navbar = () => {
             <FontAwesomeIcon className="navbar__bars" icon={faBars} />
             <img
               onClick={() => navigate("/")}
-              src="../public/logo.png"
+              src={`${import.meta.env.VITE_IMG_URL}/logo.png`}
               alt=""
             />
             <p className="navbar__menu" onClick={() => toggleMenu()}>

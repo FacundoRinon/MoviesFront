@@ -47,7 +47,7 @@ const SignUp = () => {
     <div className="signUp">
       <div className="signUp__content">
         <div className="signUp__img">
-          <img src="../public/logo.png" alt="" />
+          <img src={`${import.meta.env.VITE_IMG_URL}/logo.png`} alt="" />
         </div>
         {/* <ToastContainer /> */}
         <div className="signUp__container">

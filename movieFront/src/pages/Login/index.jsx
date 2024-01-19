@@ -36,7 +36,7 @@ const Login = () => {
     <div className="login">
       <div className="login__content">
         <div className="login__img">
-          <img src="../public/logo.png" alt="" />
+          <img src={`${import.meta.env.VITE_IMG_URL}/logo.png`} alt="" />
         </div>
         <div className="login__container">
           <h1>Welcome Back</h1>
