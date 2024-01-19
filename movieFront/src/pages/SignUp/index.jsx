@@ -20,7 +20,7 @@ const SignUp = () => {
     event.preventDefault();
     const response = await axios({
       method: "POST",
-      url: `${import.meta.env.VITE_API_URL}users/`,
+      url: `${import.meta.env.VITE_API_URL}/users/`,
       data: {
         name: nameValue,
         email: emailValue,
