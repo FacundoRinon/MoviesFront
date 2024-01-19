@@ -73,15 +73,17 @@ const MoviesPage = () => {
     initHome();
   }, [id]);
 
-  useEffect(() => {
-    const foundScore = user.scored.find(
-      (score) =>
-        score.element_id === parseInt(movie.id) && score.media === "movie"
-    );
-    if (foundScore) {
-      setUserScore(foundScore.score);
-    }
-  }, [movie]);
+  if (user) {
+    useEffect(() => {
+      const foundScore = user.scored.find(
+        (score) =>
+          score.element_id === parseInt(movie.id) && score.media === "movie"
+      );
+      if (foundScore) {
+        setUserScore(foundScore.score);
+      }
+    }, [movie]);
+  }
 
   const toggleModal = () => {
     if (modal) {

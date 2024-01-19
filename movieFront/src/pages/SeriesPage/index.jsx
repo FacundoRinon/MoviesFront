@@ -65,15 +65,17 @@ const SeriesPage = () => {
     initHome();
   }, [id]);
 
-  useEffect(() => {
-    const foundScore = user.scored.find(
-      (score) =>
-        score.element_id === parseInt(series.id) && score.media === "tv"
-    );
-    if (foundScore) {
-      setUserScore(foundScore.score);
-    }
-  }, [series]);
+  if (user) {
+    useEffect(() => {
+      const foundScore = user.scored.find(
+        (score) =>
+          score.element_id === parseInt(series.id) && score.media === "tv"
+      );
+      if (foundScore) {
+        setUserScore(foundScore.score);
+      }
+    }, [series]);
+  }
 
   const toggleModal = () => {
     if (modal) {
