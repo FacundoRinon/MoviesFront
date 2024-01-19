@@ -81,19 +81,18 @@ const Navbar = () => {
       <div className="navbar">
         <div className="navbar__content">
           <div className="navbar__leftItems">
-            <FontAwesomeIcon className="navbar__bars" icon={faBars} />
+            <FontAwesomeIcon
+              className="navbar__bars"
+              icon={faBars}
+              onClick={() => toggleMenu()}
+            />
             <img
               onClick={() => navigate("/")}
               src={`${import.meta.env.VITE_IMG_URL}/logo.png`}
               alt=""
             />
             <p className="navbar__menu" onClick={() => toggleMenu()}>
-              <FontAwesomeIcon
-                onClick={() => setMenu(true)}
-                className="navbar__icon"
-                icon={faBars}
-              />{" "}
-              Menu
+              <FontAwesomeIcon className="navbar__icon" icon={faBars} /> Menu
             </p>
             <input
               id="search"
