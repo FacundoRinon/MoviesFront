@@ -32,7 +32,7 @@ const ScoreModal = ({
   async function handleScore() {
     const response = await axios({
       method: "PATCH",
-      url: `${import.meta.env.VITE_API_URL}movie/`,
+      url: `${import.meta.env.VITE_API_URL}/movie/`,
       data: {
         user_id: user.id,
         element_id: element.id,

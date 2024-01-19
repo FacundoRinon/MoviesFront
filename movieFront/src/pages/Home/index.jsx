@@ -75,7 +75,7 @@ const Home = () => {
       async function getScored() {
         const response = await axios({
           method: "GET",
-          url: `${import.meta.env.VITE_API_URL}movie/`,
+          url: `${import.meta.env.VITE_API_URL}/movie/`,
           headers: {
             Authorization: `Bearer ${user.token}`,
           },

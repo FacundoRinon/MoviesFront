@@ -83,7 +83,12 @@ const Navbar = () => {
               alt=""
             />
             <p className="navbar__menu" onClick={() => toggleMenu()}>
-              <FontAwesomeIcon className="navbar__icon" icon={faBars} /> Menu
+              <FontAwesomeIcon
+                onClick={() => setMenu(true)}
+                className="navbar__icon"
+                icon={faBars}
+              />{" "}
+              Menu
             </p>
             <input
               id="search"
@@ -126,7 +131,9 @@ const Navbar = () => {
                 <FontAwesomeIcon className="navbar__down" icon={faCaretDown} />
               </p>
             ) : (
-              <p onClick={() => navigate("/login")}>Sing In</p>
+              <p className="navbar__login" onClick={() => navigate("/login")}>
+                Log in
+              </p>
             )}
           </div>
         </div>

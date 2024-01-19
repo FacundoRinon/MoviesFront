@@ -18,7 +18,7 @@ const Login = () => {
     event.preventDefault();
     const response = await axios({
       method: "POST",
-      url: `${import.meta.env.VITE_API_URL}users/login`,
+      url: `${import.meta.env.VITE_API_URL}/users/login`,
       data: {
         email: emailValue,
         password: passwordValue,

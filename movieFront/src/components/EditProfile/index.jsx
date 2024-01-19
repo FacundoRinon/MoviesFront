@@ -31,7 +31,7 @@ const EditProfile = ({ setModal, user }) => {
 
     const response = await axios({
       method: "PATCH",
-      url: `${import.meta.env.VITE_API_URL}users/profile`,
+      url: `${import.meta.env.VITE_API_URL}/users/profile`,
       data: formData,
       headers: {
         Authorization: `Bearer ${user.token}`,

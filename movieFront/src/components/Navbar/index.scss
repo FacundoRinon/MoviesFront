@@ -192,5 +192,9 @@
         background-color: $color-terciary;
       }
     }
+
+    &__login {
+      cursor: pointer;
+    }
   }
 }
