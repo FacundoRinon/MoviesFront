@@ -66,6 +66,8 @@ const ElementCard = ({ element, series }) => {
       headers: {
         Authorization: `Bearer ${user.token}`,
       },
+      withCredentials: true,
+      timeout: 10000,
     });
     dispatch(toggleWatchlist(response.data.favorites));
   }
