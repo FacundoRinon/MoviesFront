@@ -20,26 +20,30 @@ const ElementCard = ({ element, series }) => {
   const [userScore, setUserScore] = useState(false);
 
   if (user) {
-    useEffect(() => {
-      setAlreadyInWatchlist(
-        user.favoriteMovies.some((movie) => movie.element_id === element.id)
-      );
-    }, [user.favoriteMovies, element.id]);
+    if (user.favoriteMovies) {
+      useEffect(() => {
+        setAlreadyInWatchlist(
+          user.favoriteMovies.some((movie) => movie.element_id === element.id)
+        );
+      }, [user.favoriteMovies, element.id]);
+    }
 
-    useEffect(() => {
-      const foundScore =
-        user.scored &&
-        user.scored.find(
+    if (user.scored) {
+      useEffect(() => {
+        const foundScore = user.scored.find(
           (score) =>
             score.element_id === element.id &&
             (score.media === element.media_type ||
               (score.media === "tv" && series))
         );
-      if (foundScore) {
-        setUserScore(foundScore.score);
-      }
-    }, [user]);
+        if (foundScore) {
+          setUserScore(foundScore.score);
+        }
+      }, [user]);
+    }
   }
+
+  console.log(userScore);
 
   const toggleModal = () => {
     if (modal) {
