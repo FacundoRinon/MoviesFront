@@ -43,8 +43,6 @@ const ElementCard = ({ element, series }) => {
     }
   }
 
-  console.log(userScore);
-
   const toggleModal = () => {
     if (modal) {
       setModal(false);
