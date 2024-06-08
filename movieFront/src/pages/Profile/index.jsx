@@ -85,8 +85,6 @@ const Profile = () => {
     getScored();
   }, []);
 
-  console.log(user.favoriteMovies.length);
-
   return (
     <>
       <div className="profile">
