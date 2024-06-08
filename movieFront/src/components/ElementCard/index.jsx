@@ -22,9 +22,9 @@ const ElementCard = ({ element, series }) => {
   if (user) {
     useEffect(() => {
       setAlreadyInWatchlist(
-        user.favoriteMovies.some((movie) => movie.element_id === element.id)
+        user.favoriteMovies.some((movie) => movie.element_id == element.id)
       );
-    }, [user.favoriteMovies, element.id]);
+    }, [user.favoriteMovies]);
 
     useEffect(() => {
       const foundScore =
