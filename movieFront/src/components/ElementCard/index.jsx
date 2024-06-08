@@ -31,7 +31,7 @@ const ElementCard = ({ element, series }) => {
         user.scored &&
         user.scored.find(
           (score) =>
-            score.element_id === element.id &&
+            score.element_id == element.id &&
             (score.media === element.media_type ||
               (score.media === "tv" && series))
         );
