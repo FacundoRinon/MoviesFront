@@ -69,7 +69,7 @@ const SeriesPage = () => {
     useEffect(() => {
       const foundScore = user.scored.find(
         (score) =>
-          score.element_id === parseInt(series.id) && score.media === "tv"
+          score.element_id == parseInt(series.id) && score.media === "tv"
       );
       if (foundScore) {
         setUserScore(foundScore.score);

@@ -77,7 +77,7 @@ const MoviesPage = () => {
     useEffect(() => {
       const foundScore = user.scored.find(
         (score) =>
-          score.element_id === parseInt(movie.id) && score.media === "movie"
+          score.element_id == parseInt(movie.id) && score.media === "movie"
       );
       if (foundScore) {
         setUserScore(foundScore.score);

@@ -32,6 +32,23 @@ const ScoreModal = ({
     setIsHovered(starNumber);
   };
 
+  // if(user){
+  //   useEffect(() => {
+  //     const foundScore =
+  //       user.scored &&
+  //       user.scored.find(
+  //         (score) =>
+  //           score.element_id == element.id &&
+  //           (score.media === series)
+  //       );
+  //     if (foundScore) {
+  //       setUserScore(foundScore.score);
+  //     }
+  //   }, [user]);
+  // }
+
+  console.log(series);
+
   async function handleScore() {
     const response = await axios({
       method: "PATCH",
