@@ -242,7 +242,10 @@ const SeriesPage = () => {
                     </div>
                   </div>
                   <div className="seriesPage__photosCol">
-                    <h2 className="seriesPage__clickRow">
+                    <h2
+                      className="seriesPage__clickRow"
+                      onClick={() => navigate(`/photos/${id}/tv/0`)}
+                    >
                       Photos <FontAwesomeIcon icon={faChevronRight} />
                     </h2>
                     <div className="seriesPage__photos">

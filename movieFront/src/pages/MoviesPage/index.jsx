@@ -264,7 +264,10 @@ const MoviesPage = () => {
                     </div>
                   </div>
                   <div className="moviesPage__photosCol">
-                    <h2 className="moviesPage__clickRow">
+                    <h2
+                      className="moviesPage__clickRow"
+                      onClick={() => navigate(`/photos/${id}/movies/0`)}
+                    >
                       Photos <FontAwesomeIcon icon={faChevronRight} />
                     </h2>
                     <div className="moviesPage__photos">
