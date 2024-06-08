@@ -41,6 +41,26 @@ const userSlice = createSlice({
       }
       return state;
     },
+    addScore(state, action) {
+      const { score, element_id, media } = action.payload;
+      const existingIndex = state.scored.findIndex(
+        (s) => s.element_id == element_id
+      );
+
+      if (existingIndex === -1) {
+        const newScore = [action.payload, ...state.scored];
+        return { ...state, scored: newScore };
+      } else {
+        const updatedScores = state.scored.map((s, index) => {
+          if (index === existingIndex) {
+            return action.payload;
+          } else {
+            return s;
+          }
+        });
+        return { ...state, scored: updatedScores };
+      }
+    },
     editUser(state, action) {
       const newUser = {
         ...state,
@@ -53,6 +73,12 @@ const userSlice = createSlice({
 });
 
 const { actions, reducer } = userSlice;
-export const { setToken, removeToken, updateUser, toggleWatchlist, editUser } =
-  actions;
+export const {
+  setToken,
+  removeToken,
+  updateUser,
+  toggleWatchlist,
+  addScore,
+  editUser,
+} = actions;
 export default reducer;

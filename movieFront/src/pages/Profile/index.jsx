@@ -52,7 +52,7 @@ const Profile = () => {
       }
     };
     getFavorites();
-  }, []);
+  }, [user.favoriteMovies]);
 
   useEffect(() => {
     const getScored = async () => {
@@ -83,7 +83,7 @@ const Profile = () => {
       }
     };
     getScored();
-  }, []);
+  }, [user.scored]);
 
   return (
     <>

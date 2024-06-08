@@ -7,10 +7,12 @@ import {
   faTimes,
   faStar as solidStar,
 } from "@fortawesome/free-solid-svg-icons";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 
+import { addScore } from "../../redux/userSlice";
+
 import "./index.scss";
-import { useSelector } from "react-redux";
 
 const ScoreModal = ({
   element,
@@ -24,6 +26,7 @@ const ScoreModal = ({
   const [score, setScore] = useState(0);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleMouseEnter = (starNumber) => () => {
     setIsHovered(starNumber);
@@ -44,6 +47,13 @@ const ScoreModal = ({
       },
     });
     setUserScore(response.data.newScore.score);
+    dispatch(
+      addScore({
+        score: score,
+        element_id: element.id,
+        media: series || element.media_type === "tv" ? "tv" : "movie",
+      })
+    );
     setModal(false);
   }
 
