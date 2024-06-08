@@ -85,6 +85,8 @@ const Profile = () => {
     getScored();
   }, []);
 
+  console.log(user.favoriteMovies.length);
+
   return (
     <>
       <div className="profile">
@@ -107,13 +109,19 @@ const Profile = () => {
           </div>
         </div>
         <div className="profile__watchlist">
-          <h3>On your watchlist</h3>
+          {user.favoriteMovies.length > 0 ? (
+            <h3>On your watchlist</h3>
+          ) : (
+            <h3>Add content to your Watchlist</h3>
+          )}
           <ElementsList elements={favorites} />
         </div>
-        <div className="profile__scored">
-          <h3>Your scored</h3>
-          <ElementsList elements={scored} />
-        </div>
+        {user.scored.length > 0 && (
+          <div className="profile__scored">
+            <h3>Your scored content</h3>
+            <ElementsList elements={scored} />
+          </div>
+        )}
         <Footer />
       </div>
       {modal && <EditProfile setModal={setModal} user={user} />}
