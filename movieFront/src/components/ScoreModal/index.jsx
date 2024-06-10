@@ -69,19 +69,19 @@ const ScoreModal = ({
   }
 
   async function handleDeleteScore() {
-    // const response = await axios({
-    //   method: "DELETE",
-    //   url: `${import.meta.env.VITE_API_URL}/movie/${element.id}`,
-    //   data: {
-    //     user_id: user.id,
-    //     element_id: element.id,
-    //     media: series || element.media_type === "tv" ? "tv" : "movie",
-    //     score: score,
-    //   },
-    //   headers: {
-    //     Authorization: `Bearer ${user.token}`,
-    //   },
-    // });
+    const response = await axios({
+      method: "DELETE",
+      url: `${import.meta.env.VITE_API_URL}/movie/${element.id}`,
+      data: {
+        user_id: user.id,
+        element_id: element.id,
+        media: series || element.media_type === "tv" ? "tv" : "movie",
+        score: score,
+      },
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
     dispatch(
       deleteScore({
         score: score,
