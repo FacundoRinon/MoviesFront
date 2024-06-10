@@ -62,7 +62,6 @@ const userSlice = createSlice({
       }
     },
     deleteScore(state, action) {
-      console.log(action.payload);
       const { score, element_id, media } = action.payload;
       const existingIndex = state.scored.findIndex(
         (s) => s.element_id == element_id
