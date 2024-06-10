@@ -71,7 +71,7 @@ const ScoreModal = ({
   async function handleDeleteScore() {
     const response = await axios({
       method: "DELETE",
-      url: `${import.meta.env.VITE_API_URL}/movie/${element.id}`,
+      url: `${import.meta.env.VITE_API_URL}/movie/`,
       data: {
         user_id: user.id,
         element_id: element.id,
