@@ -82,7 +82,7 @@ const MoviesPage = () => {
       if (foundScore) {
         setUserScore(foundScore.score);
       }
-    }, [movie]);
+    }, [movie, user.scored]);
   }
 
   const toggleModal = () => {

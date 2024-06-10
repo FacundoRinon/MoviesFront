@@ -74,7 +74,7 @@ const SeriesPage = () => {
       if (foundScore) {
         setUserScore(foundScore.score);
       }
-    }, [series]);
+    }, [series, user.scored]);
   }
 
   const toggleModal = () => {

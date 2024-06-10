@@ -61,6 +61,20 @@ const userSlice = createSlice({
         return { ...state, scored: updatedScores };
       }
     },
+    deleteScore(state, action) {
+      console.log(action.payload);
+      const { score, element_id, media } = action.payload;
+      const existingIndex = state.scored.findIndex(
+        (s) => s.element_id == element_id
+      );
+      if (existingIndex !== -1) {
+        const updatedScores = [...state.scored];
+        updatedScores.splice(existingIndex, 1);
+        return { ...state, scored: updatedScores };
+      } else {
+        return state;
+      }
+    },
     editUser(state, action) {
       const newUser = {
         ...state,
@@ -79,6 +93,7 @@ export const {
   updateUser,
   toggleWatchlist,
   addScore,
+  deleteScore,
   editUser,
 } = actions;
 export default reducer;

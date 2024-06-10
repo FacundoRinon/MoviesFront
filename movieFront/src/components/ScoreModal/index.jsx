@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
@@ -10,7 +10,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 
-import { addScore } from "../../redux/userSlice";
+import { addScore, deleteScore } from "../../redux/userSlice";
 
 import "./index.scss";
 
@@ -32,22 +32,16 @@ const ScoreModal = ({
     setIsHovered(starNumber);
   };
 
-  // if(user){
-  //   useEffect(() => {
-  //     const foundScore =
-  //       user.scored &&
-  //       user.scored.find(
-  //         (score) =>
-  //           score.element_id == element.id &&
-  //           (score.media === series)
-  //       );
-  //     if (foundScore) {
-  //       setUserScore(foundScore.score);
-  //     }
-  //   }, [user]);
-  // }
-
-  console.log(series);
+  if (user) {
+    useEffect(() => {
+      const foundScore =
+        user.scored &&
+        user.scored.find((score) => score.element_id == element.id);
+      if (foundScore) {
+        setScore(foundScore.score);
+      }
+    }, []);
+  }
 
   async function handleScore() {
     const response = await axios({
@@ -66,6 +60,30 @@ const ScoreModal = ({
     setUserScore(response.data.newScore.score);
     dispatch(
       addScore({
+        score: score,
+        element_id: element.id,
+        media: series || element.media_type === "tv" ? "tv" : "movie",
+      })
+    );
+    setModal(false);
+  }
+
+  async function handleDeleteScore() {
+    // const response = await axios({
+    //   method: "DELETE",
+    //   url: `${import.meta.env.VITE_API_URL}/movie/${element.id}`,
+    //   data: {
+    //     user_id: user.id,
+    //     element_id: element.id,
+    //     media: series || element.media_type === "tv" ? "tv" : "movie",
+    //     score: score,
+    //   },
+    //   headers: {
+    //     Authorization: `Bearer ${user.token}`,
+    //   },
+    // });
+    dispatch(
+      deleteScore({
         score: score,
         element_id: element.id,
         media: series || element.media_type === "tv" ? "tv" : "movie",
@@ -184,6 +202,11 @@ const ScoreModal = ({
             >
               Log in
             </button>
+          )}
+          {score != 0 && (
+            <p className="modal__button2" onClick={() => handleDeleteScore()}>
+              Delete score
+            </p>
           )}
         </div>
       </div>
