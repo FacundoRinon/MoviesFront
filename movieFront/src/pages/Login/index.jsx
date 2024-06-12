@@ -36,7 +36,11 @@ const Login = () => {
     <div className="login">
       <div className="login__content">
         <div className="login__img">
-          <img src={`${import.meta.env.VITE_IMG_URL}/logo.png`} alt="" />
+          <img
+            src={`${import.meta.env.VITE_IMG_URL}/logo.png`}
+            onClick={() => navigate("/")}
+            alt=""
+          />
         </div>
         <div className="login__container">
           <h1>Welcome Back</h1>
@@ -57,10 +61,13 @@ const Login = () => {
               value={passwordValue}
               onChange={(event) => setPasswordValue(event.target.value)}
             />
-            <button>Create your IMDb account</button>
+            <button>Login</button>
           </form>
           <p>
             Don´t have an account? <Link to={"/signUp"}>Sign up</Link>
+          </p>
+          <p>
+            You can enter the app without a user. <Link to={"/"}>Invited</Link>
           </p>
         </div>
       </div>

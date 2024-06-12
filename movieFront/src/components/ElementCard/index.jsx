@@ -7,6 +7,7 @@ import { faStar, faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
 import ScoreModal from "../ScoreModal";
+import LoginModal from "../LoginModal";
 import { toggleWatchlist } from "../../redux/userSlice";
 
 import "./index.scss";
@@ -16,8 +17,30 @@ const ElementCard = ({ element, series }) => {
   const dispatch = useDispatch();
   const [alreadyInWatchlist, setAlreadyInWatchlist] = useState(false);
   const [modal, setModal] = useState(false);
+  const [loginModal, setLoginModal] = useState(false);
 
   const [userScore, setUserScore] = useState(false);
+
+  const toggleModal = () => {
+    if (modal) {
+      setModal(false);
+    } else {
+      setModal(true);
+    }
+  };
+
+  const toggleLoginModal = () => {
+    if (loginModal) {
+      setLoginModal(false);
+    } else {
+      setLoginModal(true);
+    }
+  };
+
+  const linkTo =
+    element.media_type === "tv" || element.media_type === "Tv" || series
+      ? `/series/${element.id}`
+      : `/movies/${element.id}`;
 
   if (user) {
     useEffect(() => {
@@ -41,33 +64,28 @@ const ElementCard = ({ element, series }) => {
     }, [user]);
   }
 
-  const toggleModal = () => {
-    if (modal) {
-      setModal(false);
-    } else {
-      setModal(true);
-    }
-  };
-
-  const linkTo =
-    element.media_type === "tv" || element.media_type === "Tv" || series
-      ? `/series/${element.id}`
-      : `/movies/${element.id}`;
-
   async function handleWatchList() {
-    const response = await axios({
-      method: "PATCH",
-      url: `${import.meta.env.VITE_API_URL}/users/`,
-      data: {
-        user_id: user.id,
-        element_id: element.id,
-        media: series || element.media_type === "tv" ? "tv" : "movie",
-      },
-      headers: {
-        Authorization: `Bearer ${user.token}`,
-      },
-    });
-    dispatch(toggleWatchlist(response.data.favorites));
+    try {
+      if (user) {
+        const response = await axios({
+          method: "PATCH",
+          url: `${import.meta.env.VITE_API_URL}/users/`,
+          data: {
+            user_id: user.id,
+            element_id: element.id,
+            media: series || element.media_type === "tv" ? "tv" : "movie",
+          },
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        });
+        dispatch(toggleWatchlist(response.data.favorites));
+      } else {
+        setLoginModal(true);
+      }
+    } catch (error) {
+      console.error("Error occurred while handling watchlist:", error);
+    }
   }
 
   return (
@@ -129,6 +147,14 @@ const ElementCard = ({ element, series }) => {
             series={series}
             setUserScore={setUserScore}
             setModal={setModal}
+          />
+        </div>
+      )}
+      {loginModal && (
+        <div className="modalContainer">
+          <LoginModal
+            setLoginModal={setLoginModal}
+            toggleLoginModal={toggleLoginModal}
           />
         </div>
       )}

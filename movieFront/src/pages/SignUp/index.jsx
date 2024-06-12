@@ -47,7 +47,11 @@ const SignUp = () => {
     <div className="signUp">
       <div className="signUp__content">
         <div className="signUp__img">
-          <img src={`${import.meta.env.VITE_IMG_URL}/logo.png`} alt="" />
+          <img
+            src={`${import.meta.env.VITE_IMG_URL}/logo.png`}
+            onClick={() => navigate("/")}
+            alt=""
+          />
         </div>
         {/* <ToastContainer /> */}
         <div className="signUp__container">
@@ -87,6 +91,9 @@ const SignUp = () => {
           </form>
           <p>
             Already have an account? <Link to={"/login"}>Log in</Link>
+          </p>
+          <p>
+            You can enter the app without a user. <Link to={"/"}>Invited</Link>
           </p>
         </div>
       </div>
