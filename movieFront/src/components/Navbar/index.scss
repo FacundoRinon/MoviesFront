@@ -1,4 +1,8 @@
 @import "../../theme/variables.scss";
+.logo {
+  border-radius: 15px;
+}
+
 .navbar {
   position: fixed;
   display: flex;

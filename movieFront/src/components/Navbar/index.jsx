@@ -87,6 +87,7 @@ const Navbar = () => {
               onClick={() => toggleMenu()}
             />
             <img
+              className="logo"
               onClick={() => navigate("/")}
               src={`${import.meta.env.VITE_IMG_URL}/logo.png`}
               alt=""
